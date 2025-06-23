@@ -36,7 +36,7 @@ body{
 
     background-color: white;
 
-    border: 5px black;
+    border: 5px solid black;
     border-radius: 1cm;
 
 }
@@ -65,5 +65,6 @@ body{
 
 /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
 .answer:hover{
-    background: grey;
+    transform: translateY(-2px);
+    box-shadow: ;
 }
