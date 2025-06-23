@@ -1,13 +1,12 @@
 body{
 
-    /*Si on met la variable flex-direction : column ici, ça fait n'importe quoi*/
-    display: flex;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    justify-content: center;
+    display: flex;                                                                                          /*l'element flex permet de créer des élements flexibles qu'on va pouvoir modifier et attribuer une taille précise*/
+    text-align: center;                                                                                     /*permet de centrer notre texte dans son element*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                           /*bon c'est la font*/
+    justify-content: center;                                                                                /*ça dit à notre page qu'on veut que nos éléments soient placés au centre de la page*/
     background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));
 
-    /*références de couleurs associées a frida khalo
+    /*références de couleurs associées a frida khalo --> NE PAS DECOMMENTEZ SVP
     background: linear-gradient( to right,
     #574b50,
     #879f84,
@@ -20,72 +19,73 @@ body{
 
 
 .question{
-    display: flex;                                                      /*transforme nos boutons en éléments flex*/
-    flex-direction: column;                                             /*permet d'afficher en colonne*/
-    align-items: center;
-    text-align: center;
-    width: 900px;
-    height: 100px;
+    display: flex;                                                                                          /*transforme nos boutons en éléments flex*/
+    flex-direction: column;                                                                                 /*permet d'afficher en colonne*/
+    align-items: center;                                                                                    /*place nos questions au centre de notre box*/                                                                               
+    width: 900px;                                                                                           /*défini la taille de nox box en largeur*/
+    height: 100px;                                                                                          /*défini la taille de nox box en hauteur*/
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
+    font-size: 30px;                                                                                        /*défini la taille de notre typopgraphie*/
     text-align: center;
 
-    margin: 20px;
-    padding: 35px 50px;
+    margin: 20px;                                                                                           /*défini la taille de nos marges */
+    padding: 35px 50px;                                                                                     /*défini l'espace utilisable de notre typo*/
 
-    background-color: white;
+    background-color: white;                                                                              /*défini la couleur de notre arrière plan*/
 
-    border: 5px solid black;
-    border-radius: 1cm;
+    border: 5px solid black;                                                                              /*défini la couleur et la taille de notre bordure, il faut metter solid pour qu'on puisse la voir*/
+    border-radius: 1cm;                                                                                     /*défini l'arrondi de notre bordure*/
 
 }
 
 
 .answer{
-    display: flex;                                                      /*transforme nos boutons en éléments flex*/
-    flex-direction: column;                                             /*permet d'afficher en colonne*/
-    align-items: center;
-    width: 1000px;
-    height: 100px;
+    display: flex;                                                                                          /*transforme nos boutons en éléments flex*/
+    flex-direction: column;                                                                                 /*permet d'afficher nos boutons en colonne*/
+    align-items: center;                                                                                    /*permet de centrer nos boutons au milieu de l'espace*/
+    width: 1000px;                                                                                          /*défini la taille de nox box en largeur*/
+    height: 100px;                                                                                          /*défini la taille de nox box en hauteur*/
 
-
-    margin: 20px;
-    padding: 35px 50px;
+    margin: 20px;                                                                                           /*défini la taille de nos marges */
+    padding: 35px 50px;                                                                                     /*défini l'espace utilisable de notre typo*/
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     text-align: center;
 
     background-color: white;
-    /*border: 2px solid green;   ---> on s'en sert pas pour l'instant car on doit les afficher en fonction des réponses*/
-    border-radius: 1cm;
-    cursor: pointer;                                                    /*Nous montre qu'on est bien sur le button*/
+    border-radius: 1cm;                                                                                     /*défini l'arrondi de notre bordure*/
+    cursor: pointer;                                                                                        /*Nous montre qu'on est bien sur le button*/
 }
 
-/*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
-.answer:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+.answer:hover{                                                                                              /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
+    transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
 
 #next-button{
 
-    display: flex;                                                      /*transforme nos boutons en éléments flex*/
-    flex-direction: column;                                             /*permet d'afficher en colonne*/
-    align-items: center;
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                          
     font-size: 15px;
+    color: black;                                                                                         /*permet de faire passer notre texte en priorité sur la couleur du background*/
     text-align: center;
 
-    margin: 10px;
-    padding: 10px 15px;
+    margin: 10px;                                                                                           /*défini notre marge entre cet élement*/
+    padding: 10px 15px;                                                                                     /*défini l'espace utilisable de notre typo*/
 
-    width: 250px;
-    height: 50px;
+    width: 250px;                                                                                           /*défini la taille de nox box en largeur*/
+    height: 50px;                                                                                           /*défini la taille de nox box en hauteur*/
 
     background-color:  rgba(250, 128, 114, 0.671);
     border: 2px solid black;
     border-radius: 1cm;
+
+    cursor: pointer;                                                                                        /*défini l'arrondi de notre bordure*/
+}
+
+#next-button:hover{
+    transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
