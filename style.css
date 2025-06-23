@@ -1,8 +1,26 @@
 body{
+
+    /*Si on met la variable flex-direction : column ici, ça fait n'importe quoi*/
     display: flex;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     justify-content: center;
+    background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));
+
+    /*références de couleurs associées a frida khalo
+    background: linear-gradient( to right,
+    #574b50,
+    #879f84,
+    rgb(213, 207, 20),
+    rgba(250, 128, 114, 0.671),
+    rgba(255, 0, 0, 0.649),
+    grey);
+    */
+}
+
+
+.question{
+
 }
 
 .option{
@@ -10,12 +28,20 @@ body{
     margin: auto;
 }
 
-.reponse{
-    display: flex;
-    flex-direction: column;
+.answer{
+    display: flex;                                                      /*transforme nos boutons en éléments flex*/
+    flex-direction: column;                                             /*permet d'afficher en colonne*/
+    align-items: center;
+
+
     margin: 20px;
+    padding: 35px 50px;
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+
     background-color: white;
+    /*border: 2px solid green;   ---> on s'en sert pas pour l'instant car on doit les afficher en fonction des réponses*/
+    border-radius: 1cm;
+    cursor: pointer;                                                    /*Nous montre qu'on est bien sur le button*/
 }

@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz Game</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div id="quiz-container">
-	<!-- Section pour la question -->
-		<div class="question">
-		Fatoumata Kébé est reconnue pour ses recherches dans quel domaine scientifique ?
-		</div>
-		<!-- Section pour les options -->
-		<div class="options">
-		  <button class="reponse">L'astronomie, spécialisée dans les débris spatiaux.</button>
-		  <button class="reponse">La création de lunettes de réalité augmentée pour observer les étoiles.</button>
-		  <button class="reponse">L'étude de la météo sur Mars et ses implications pour l'agriculture spatiale.</button>
-		  <button class="reponse">La cartographie des astéroïdes qui pourraient potentiellement entrer en collision avec la Terre.</button>
-		</div>
-		
-		<!-- Prévois déjà le design du bouton "suivant" pour passer à la prochaine question -->
-		 <div class="button-container">
-		  <button id="next-button">Suivant</button>
-		</div>
-	</div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz Game</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div id="quiz-container">
+            <!-- Section pour la question -->
+            <div class="question">
+                Fatoumata Kébé est reconnue pour ses recherches dans quel domaine scientifique ?
+            </div>
+            
+            <!-- Section pour les options -->
+            <div class="options">
+                <button id="reponse1" class="answer">L'astronomie, spécialisée dans les débris spatiaux.</button>
+                <button id="reponse2" class="answer">La création de lunettes de réalité augmentée pour observer les étoiles.</button>
+                <button id="reponse3" class="answer">L'étude de la météo sur Mars et ses implications pour l'agriculture spatiale.</button>
+                <button id="reponse4" class="answer">La cartographie des astéroïdes qui pourraient potentiellement entrer en collision avec la Terre.</button>
+            </div>
+            
+            <!-- Prévois déjà le design du bouton "suivant" pour passer à la prochaine question -->
+            <div class="button-container">
+            <button disabled id="next-button">Suivant</button>
+            </div>
+        </div>
+    </body>
 </html>
