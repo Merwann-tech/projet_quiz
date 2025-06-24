@@ -65,6 +65,10 @@ body{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
 
+.answer:active{
+    background-color: rgb(250, 128, 114);
+}
+
 .end-button{
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                          
@@ -88,4 +92,8 @@ body{
 .end-button:hover{
     transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
+}
+
+.end-button:active{
+    background-color: rgb(250, 128, 114);
 }
