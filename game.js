@@ -11,6 +11,8 @@ const suivant = document.querySelector("#next-button")
 //const suivant = document.getElementByClass("next-button")
 //const suivant = document.getElementById("next-button")
 
+const replayButton = document.getElementById('replay-button')
+
 // Initialise l'index de la question courante à 0
 let currentQuestionIndex = 0
 
@@ -45,6 +47,8 @@ suivant.addEventListener('click', () => {
         AfficherQuestions.innerText = 'Bravo quiz fini';
         AfficherOption.innerHTML = ''; // Effacer les options
         suivant.style.display ='none'; // Cacher le bouton Suivant
+        replayButton.style.display = 'inline-block' // Reafficher le bouton pour rejouer
+
     }
 })
 
@@ -62,3 +66,12 @@ function toTheNextPage(){
 }
 
 */
+
+// Fonction pour réinitialiser le quiz
+replayButton.addEventListener('click', () => {
+    currentQuestionIndex = 0 //  Réinitialiser l'index 
+    suivant.style.display ='inline-block'; // Reafficher le bouton Suivant
+    replayButton.style.display = 'none' // Cacher le bouton pour rejouer
+    loadQuestion(currentQuestionIndex)   // Recharger la première question
+  
+});
