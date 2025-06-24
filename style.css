@@ -65,8 +65,8 @@ body{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
 
-.answer:active{
-    background-color: rgb(250, 128, 114);
+.answer:active{                                                                                             /*changement lorsqu'on va appuyer sur le bouton avec la souris*/
+    background-color: rgb(250, 128, 114);                                                                 /*va changer le background de notre bouton lorsqu'on va appuyer dessus*/
 }
 
 .end-button{
@@ -97,3 +97,32 @@ body{
 .end-button:active{
     background-color: rgb(250, 128, 114);
 }
+
+/* Tests d'adaptabilité en fonction de la taille de l'ecran ( ne marche pas pour l'instant )
+@media(max-width: 1300px){
+    body{
+        padding: 10px;
+    }
+
+    #quizz-container{
+        padding: 10px;
+        max-width: 100%;
+    
+    }
+
+    .question{
+        font-size: 1rem;                                                                                        garder la taille de la police dans notre racine ( avant quoi )
+        padding: 10px;
+    }
+
+    .options{
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    .button-container{
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}
+*/
