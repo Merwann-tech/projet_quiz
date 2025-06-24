@@ -25,12 +25,31 @@ function loadQuestion(currentQuestion){
     // Efface les options précédentes avant d'afficher les nouvelles
     AfficherOption.innerHTML = ""
     // Pour chaque option de la première question, crée un bouton et l'ajoute à la page
+    let incrementationId = 1
+
+
     quiz_Frida.questions[currentQuestion].options.forEach(elem => {
         const option_btn = document.createElement('button'); // Crée un bouton
         option_btn.innerText = elem; // Définit le texte du bouton
         option_btn.classList.add('answer'); // Ajoute une classe CSS au bouton
+        option_btn.setAttribute("id",`reponse${incrementationId}`)
         AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
+        incrementationId ++
     });
+
+        //On place nos addEventListener ici car on souhaite qu'ils soient instanciés tout le temps
+        //de cette façon, ils seront chargés a chaque changement de question
+    const boutonOption1 = document.getElementById("reponse1")
+    boutonOption1.addEventListener('click',checkAnswer)
+
+    const boutonOption2 = document.getElementById("reponse2")
+    boutonOption2.addEventListener('click',checkAnswer)
+
+    const boutonOption3 = document.getElementById("reponse3")
+    boutonOption3.addEventListener('click',checkAnswer)
+
+    const boutonOption4 = document.getElementById("reponse4")
+    boutonOption4.addEventListener('click',checkAnswer)
 }
 
 loadQuestion(currentQuestionIndex)
@@ -75,3 +94,34 @@ replayButton.addEventListener('click', () => {
     loadQuestion(currentQuestionIndex)   // Recharger la première question
   
 });
+
+
+
+function checkAnswer(event){
+    const answerId = document.getElementsByClassName("answer")
+    let reponse = quiz_Frida.questions[currentQuestionIndex].correct_answer // stockage de la réponse
+    let choix = event.target.innerText  
+
+    if (choix == reponse){ // lorsqu'on a la bonne réponse
+        event.target.style.border = "5px solid green" 
+        suivant.disabled = false
+        for(let i=0; i < answerId.length; i ++){
+            answerId[i].disabled = true
+        }
+        console.log("bonne réponse")
+    }
+    else{ // lorsqu'on pas la bonne réponse
+        event.target.style.border = "5px solid red" 
+        suivant.disabled = false
+        console.log("mauvaise réponse")
+        for(let i=0; i < answerId.length; i ++){
+            answerId[i].disabled = true
+            if(answerId[i].innerText == reponse){
+                answerId[i].style.border = "5px solid green"  
+            }
+        }
+    }
+
+}
+
+
