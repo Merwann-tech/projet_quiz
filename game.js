@@ -39,17 +39,12 @@ function loadQuestion(currentQuestion){
 
         //On place nos addEventListener ici car on souhaite qu'ils soient instanciés tout le temps
         //de cette façon, ils seront chargés a chaque changement de question
-    const boutonOption1 = document.getElementById("reponse1")
-    boutonOption1.addEventListener('click',checkAnswer)
+    const boutonOption = document.querySelectorAll('.answer')
 
-    const boutonOption2 = document.getElementById("reponse2")
-    boutonOption2.addEventListener('click',checkAnswer)
+    boutonOption.forEach(element => {
+        element.addEventListener('click',checkAnswer)
+    })
 
-    const boutonOption3 = document.getElementById("reponse3")
-    boutonOption3.addEventListener('click',checkAnswer)
-
-    const boutonOption4 = document.getElementById("reponse4")
-    boutonOption4.addEventListener('click',checkAnswer)
 }
 
 loadQuestion(currentQuestionIndex)
@@ -71,20 +66,6 @@ suivant.addEventListener('click', () => {
     }
 })
 
-/*suivant.addEventListener('click', toTheNextPage)
-
-function toTheNextPage(){
-    currentQuestionIndex ++
-    if(currentQuestionIndex < quiz_Frida.questions.lenght){
-        loadQuestion(currentQuestionIndex)
-    } else {
-        AfficherQuestions.innerText = 'Bravo vous avez fini le quizz'
-        AfficherOption.innerHTML = ''
-        suivant.style.display='none'
-    }
-}
-
-*/
 
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
@@ -108,12 +89,10 @@ function checkAnswer(event){
         for(let i=0; i < answerId.length; i ++){
             answerId[i].disabled = true
         }
-        console.log("bonne réponse")
     }
     else{ // lorsqu'on pas la bonne réponse
         event.target.style.border = "5px solid red" 
         suivant.disabled = false
-        console.log("mauvaise réponse")
         for(let i=0; i < answerId.length; i ++){
             answerId[i].disabled = true
             if(answerId[i].innerText == reponse){
