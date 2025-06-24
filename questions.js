@@ -40,5 +40,15 @@ export const quiz_Frida = {
             ],
             correct_answer: "Diego Rivera"
         },
+        {
+            text: "Dans quelle ville se trouve la maison bleue (Casa Azul), aujourd'hui musée consacré à Frida Kahlo ?",
+            options: [
+                "Buenos Aires",
+                "Mexico",
+                "Madrid",
+                "Lima",
+            ],
+            correct_answer: "Mexico"
+        },
     ]
 };

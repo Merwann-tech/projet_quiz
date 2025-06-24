@@ -1,21 +1,17 @@
 // Importe les questions du quiz depuis le fichier questions.js
 import { quiz_Frida } from './questions.js'
-
 // Sélectionne l'élément HTML où la question sera affichée
 const AfficherQuestions = document.querySelector(".question")
 // Sélectionne l'élément HTML où les options seront affichées
 const AfficherOption = document.querySelector(".options")
-
 // Sélectionne le bouton "Suivant" par son identifiant
 const suivant = document.querySelector("#next-button")
-//const suivant = document.getElementByClass("next-button")
-//const suivant = document.getElementById("next-button")
-
 const replayButton = document.getElementById('replay-button')
-
+const nombreQuestion = quiz_Frida.questions.lenght
 // Initialise l'index de la question courante à 0
 let currentQuestionIndex = 0
 
+let score = 0
 
 function loadQuestion(currentQuestion){
     // Récupère le texte de la première question du quiz
@@ -50,15 +46,29 @@ function loadQuestion(currentQuestion){
 loadQuestion(currentQuestionIndex)
 
 suivant.addEventListener('click', () => {
+    suivant.disabled = true
     // Incrémente l'index de la question courante
     currentQuestionIndex += 1
     // Vérifie s'il reste des questions à afficher
-    if (currentQuestionIndex < quiz_Frida.questions.length) {
+    let totalQuestion = parseInt(quiz_Frida.questions.length)
+    if (currentQuestionIndex < totalQuestion) {
         // Afficher la question suivante
         loadQuestion(currentQuestionIndex)
     } else {
         // Si plus de questions, indiquer la fin du quiz
-        AfficherQuestions.innerText = 'Bravo quiz fini';
+        if(score == totalQuestion){
+            AfficherQuestions.innerText = "Félicitations, tu as obtenu le score parfait de : " + score + '/' + totalQuestion;    
+        } else if(score == 0) {
+            AfficherQuestions.innerText = "T'y est un tigre le sang : " + score + '/' + totalQuestion;
+        } else if(score > totalQuestion / 2){
+            AfficherQuestions.innerText = 'Bravo, tu as obtenu : ' + score + '/' + totalQuestion;
+        } else if(score <= totalQuestion / 2){
+            AfficherQuestions.innerText = 'Pas fou ça tu peux mieux faire : ' + score + '/' + totalQuestion;
+        }
+        else{
+            AfficherQuestions.innerText = "Tout est cassé" + score + '/' + totalQuestion;
+        }
+        
         AfficherOption.innerHTML = ''; // Effacer les options
         suivant.style.display ='none'; // Cacher le bouton Suivant
         replayButton.style.display = 'inline-block' // Reafficher le bouton pour rejouer
@@ -86,6 +96,7 @@ function checkAnswer(event){
     if (choix == reponse){ // lorsqu'on a la bonne réponse
         event.target.style.border = "5px solid green" 
         suivant.disabled = false
+        score ++
         for(let i=0; i < answerId.length; i ++){
             answerId[i].disabled = true
         }
