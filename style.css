@@ -40,7 +40,8 @@ body{
 }
 
 
-.answer{
+.answer,
+.classQuiz{
     display: flex;                                                                                          /*transforme nos boutons en éléments flex*/
     flex-direction: column;                                                                                 /*permet d'afficher nos boutons en colonne*/
     align-items: center;                                                                                    /*permet de centrer nos boutons au milieu de l'espace*/
@@ -60,12 +61,14 @@ body{
 }
 
 
-.answer:hover{                                                                                              /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
+.answer:hover,
+.classQuiz:hover{                                                                                              /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
     transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
 
-.answer:active{                                                                                             /*changement lorsqu'on va appuyer sur le bouton avec la souris*/
+.answer:active,
+.classQuiz:active{                                                                                             /*changement lorsqu'on va appuyer sur le bouton avec la souris*/
     background-color: rgb(250, 128, 114);                                                                 /*va changer le background de notre bouton lorsqu'on va appuyer dessus*/
 }
 
