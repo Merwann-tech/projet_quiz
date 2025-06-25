@@ -65,6 +65,7 @@ suivant.addEventListener('click', () => {
 
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
+    score = 0 //  Réinitialiser le score
     currentQuestionIndex = 0 //  Réinitialiser l'index 
     suivant.style.display ='inline-block'; // Reafficher le bouton Suivant
     replayButton.style.display = 'none' // Cacher le bouton pour rejouer
