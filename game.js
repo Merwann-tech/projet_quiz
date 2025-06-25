@@ -1,4 +1,4 @@
-import { quiz_Frida } from './questions.js' // Importe les questions du quiz depuis le fichier questions.js
+import { quiz } from './questions.js' // Importe les questions du quiz depuis le fichier questions.js
 const AfficherQuestions = document.querySelector(".question") // Sélectionne l'élément HTML où la question sera affichée
 const AfficherOption = document.querySelector(".options") // Sélectionne l'élément HTML où les options seront affichées
 const suivant = document.querySelector("#next-button") // Sélectionne le bouton "Suivant" par son identifiant
@@ -6,14 +6,47 @@ const replayButton = document.getElementById('replay-button')// Sélectionne le 
 
 let currentQuestionIndex = 0// Initialise l'index de la question courante à 0
 let score = 0 // Initialise le score du joueur à 0
+let numCategories = 0 // Initialise la catégorie à 0, on pourrait la laisser vide
+let categories = quiz.categories[numCategories] // on récupère la liste des catégories
+
+choixQuiz()
+
+function choixQuiz(){
+    AfficherQuestions.innerText = "Choisi ton Quiz" // changer l'affichage
+    AfficherOption.innerHTML = ''   // on vide l'affichage des options
+    let incrementationQuiz = 0    // permet de donner un id aux boutons de quiz --> voir dans boucle forEach
+
+    quiz.categories.forEach(categorieName => {
+        console.log("ça se lance")
+        const option_btn = document.createElement('button'); // Crée un bouton
+        option_btn.innerText = categorieName.nom; // Définit le texte du bouton
+        option_btn.classList.add('classQuiz'); // Ajoute une classe CSS au bouton
+        option_btn.setAttribute("id",incrementationQuiz)
+        AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
+        incrementationQuiz ++
+        
+    })
+
+    const boutonOption = document.querySelectorAll('.classQuiz') // Ajoute un écouteur d'événement à chaque bouton réponse
+    boutonOption.forEach(element => { 
+        element.addEventListener('click', checkQuiz) // lance la fonction checkQuiz
+    })
+
+}
+
+function checkQuiz(event){
+    numCategories = parseInt(event.target.id)
+    categories = quiz.categories[numCategories] // on récupère le numéro de catégorie  
+    loadQuestion(currentQuestionIndex)
+}
 
 function loadQuestion(currentQuestion){
-    const question1 = quiz_Frida.questions[currentQuestion].text // Récupère le texte de la première question du quiz
+    const question1 = categories.questions[currentQuestion].text // Récupère le texte de la première question du quiz
     AfficherQuestions.innerText = question1    // Affiche la première question dans l'élément sélectionné
     AfficherOption.innerHTML = "" // Efface les options précédentes avant d'afficher les nouvelles
     let incrementationId = 1// Pour chaque option de la première question, crée un bouton et l'ajoute à la page
 
-    quiz_Frida.questions[currentQuestion].options.forEach(elem => {
+    categories.questions[currentQuestion].options.forEach(elem => {
         const option_btn = document.createElement('button'); // Crée un bouton
         option_btn.innerText = elem; // Définit le texte du bouton
         option_btn.classList.add('answer'); // Ajoute une classe CSS au bouton
@@ -29,12 +62,11 @@ function loadQuestion(currentQuestion){
 
 }
 
-loadQuestion(currentQuestionIndex)
 
 suivant.addEventListener('click', () => {
     suivant.disabled = true
     currentQuestionIndex += 1// Incrémente l'index de la question courante
-    let totalQuestion = parseInt(quiz_Frida.questions.length)
+    let totalQuestion = parseInt(categories.questions.length)
     if (currentQuestionIndex < totalQuestion) {    // Vérifie s'il reste des questions à afficher
         loadQuestion(currentQuestionIndex) // Afficher la question suivante
     } 
@@ -69,7 +101,7 @@ replayButton.addEventListener('click', () => {
     currentQuestionIndex = 0 //  Réinitialiser l'index 
     suivant.style.display ='inline-block'; // Reafficher le bouton Suivant
     replayButton.style.display = 'none' // Cacher le bouton pour rejouer
-    loadQuestion(currentQuestionIndex)   // Recharger la première question
+    choixQuiz()   // Recharger la page de sélection ( la première page quoi )
   
 });
 
@@ -77,7 +109,7 @@ replayButton.addEventListener('click', () => {
 
 function checkAnswer(event){
     const answerId = document.getElementsByClassName("answer") //Récupère tous les éléments avec la classe "answer".
-    let reponse = quiz_Frida.questions[currentQuestionIndex].correct_answer // stockage de la réponse
+    let reponse = categories.questions[currentQuestionIndex].correct_answer // stockage de la réponse
     let choix = event.target.innerText  //Récupère le texte de la réponse choisie par l'utilisateur.
 
     if (choix == reponse){ // lorsqu'on a la bonne réponse
