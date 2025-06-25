@@ -129,3 +129,79 @@ body{
     }
 }
 */
+
+
+
+/*Tablette*/
+/*
+@media(max-width : 1024px){
+
+}
+*/
+
+
+/*Telephone*/
+/*
+@media(min-width : 600px) {
+
+    body{
+    display: flex;                                                                                          
+    text-align: center;                                                                                     
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                           
+    justify-content: center;                                                                                
+    background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));
+    }
+
+    .question{
+        display: flex;                                                                                          
+        flex-direction: column;                                                                                 
+        align-items: center; 
+        width: 450px;                                                                                           
+        height: 50px;                                                                                          
+
+        font-size: 20px;                                                                                        
+
+        margin: 10px;                                                                                           
+        padding: 15px 30px;                                                                                     
+
+        background-color: white;                                                                             
+    }
+
+    .answer,
+    .classQuiz{
+        
+    }
+
+}
+*/
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px; 
+  }
+
+  #quiz-container {  /*On englobe toutes nos questions et nos options --> à changer si ça marche*/
+    padding: 20px;
+    max-width: 100%; 
+  }
+
+  .question {  /*La partie uniquement question*/
+    font-size: 1rem; 
+    padding: 15px; 
+  }
+
+  .options button { /*Pour réduire nos putains de bouton de merde*/
+    font-size: 0.8rem; 
+    padding: 12px; 
+  }
+
+  #next-button,
+  #replay-button {
+    padding: 8px 15px;
+    font-size: 1rem; 
+  }
+
+  .button-container {
+    margin-top: 15px;
+  }
+}
