@@ -12,9 +12,15 @@ let categories = quiz.categories[numCategories] // on récupère la liste des ca
 let time = ""
 choixQuiz()
 
+document.addEventListener("keydown",(e) =>{
+    if(e.key === "Enter" ){
+        suivant.click()
+    }
+})
+
 function decompt(){
     timer.style.display ='inline-block'
-    let tempsRestant = 10
+    let tempsRestant = 15
     timer.innerText = `Temps restant : ${tempsRestant}s`
     time = setInterval(() => {
     tempsRestant--;
@@ -29,7 +35,7 @@ function decompt(){
 
 function choixQuiz(){
     suivant.style.display ='none';
-    AfficherQuestions.innerText = "Choisi ton Quiz" // changer l'affichage
+    AfficherQuestions.innerText = "Choisis ton Quiz" // changer l'affichage
     AfficherOption.innerHTML = ''   // on vide l'affichage des options
     let incrementationQuiz = 0    // permet de donner un id aux boutons de quiz --> voir dans boucle forEach
 
