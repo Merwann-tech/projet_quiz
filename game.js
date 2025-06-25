@@ -12,6 +12,7 @@ let categories = quiz.categories[numCategories] // on récupère la liste des ca
 choixQuiz()
 
 function choixQuiz(){
+    suivant.style.display ='none';
     AfficherQuestions.innerText = "Choisi ton Quiz" // changer l'affichage
     AfficherOption.innerHTML = ''   // on vide l'affichage des options
     let incrementationQuiz = 0    // permet de donner un id aux boutons de quiz --> voir dans boucle forEach
@@ -41,6 +42,7 @@ function checkQuiz(event){
 }
 
 function loadQuestion(currentQuestion){
+    suivant.style.display ='inline-block';
     const question1 = categories.questions[currentQuestion].text // Récupère le texte de la première question du quiz
     AfficherQuestions.innerText = question1    // Affiche la première question dans l'élément sélectionné
     AfficherOption.innerHTML = "" // Efface les options précédentes avant d'afficher les nouvelles
