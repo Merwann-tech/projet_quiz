@@ -3,13 +3,29 @@ const AfficherQuestions = document.querySelector(".question") // Sélectionne l'
 const AfficherOption = document.querySelector(".options") // Sélectionne l'élément HTML où les options seront affichées
 const suivant = document.querySelector("#next-button") // Sélectionne le bouton "Suivant" par son identifiant
 const replayButton = document.getElementById('replay-button')// Sélectionne le bouton "Rejouer" par son identifiant
+const timer = document.getElementById("timer")
 
 let currentQuestionIndex = 0// Initialise l'index de la question courante à 0
 let score = 0 // Initialise le score du joueur à 0
 let numCategories = 0 // Initialise la catégorie à 0, on pourrait la laisser vide
 let categories = quiz.categories[numCategories] // on récupère la liste des catégories
-
+let time = ""
 choixQuiz()
+
+function decompt(){
+    timer.style.display ='inline-block'
+    let tempsRestant = 10
+    timer.innerText = `Temps restant : ${tempsRestant}s`
+    time = setInterval(() => {
+    tempsRestant--;
+    timer.innerText = `Temps restant : ${tempsRestant}s`;
+    if (tempsRestant <= 0) {
+        clearInterval(time);
+        boutonSuivant()
+    }
+    }, 1000);  
+}
+
 
 function choixQuiz(){
     suivant.style.display ='none';
@@ -18,7 +34,6 @@ function choixQuiz(){
     let incrementationQuiz = 0    // permet de donner un id aux boutons de quiz --> voir dans boucle forEach
 
     quiz.categories.forEach(categorieName => {
-        console.log("ça se lance")
         const option_btn = document.createElement('button'); // Crée un bouton
         option_btn.innerText = categorieName.nom; // Définit le texte du bouton
         option_btn.classList.add('classQuiz'); // Ajoute une classe CSS au bouton
@@ -42,6 +57,7 @@ function checkQuiz(event){
 }
 
 function loadQuestion(currentQuestion){
+    decompt()
     suivant.style.display ='inline-block';
     const question1 = categories.questions[currentQuestion].text // Récupère le texte de la première question du quiz
     AfficherQuestions.innerText = question1    // Affiche la première question dans l'élément sélectionné
@@ -65,36 +81,7 @@ function loadQuestion(currentQuestion){
 }
 
 
-suivant.addEventListener('click', () => {
-    suivant.disabled = true
-    currentQuestionIndex += 1// Incrémente l'index de la question courante
-    let totalQuestion = parseInt(categories.questions.length)
-    if (currentQuestionIndex < totalQuestion) {    // Vérifie s'il reste des questions à afficher
-        loadQuestion(currentQuestionIndex) // Afficher la question suivante
-    } 
-    else {// Si plus de questions, indiquer la fin du quiz
-        if(score == totalQuestion){
-            AfficherQuestions.innerText = "Félicitations, tu as obtenu le score parfait de : " + score + '/' + totalQuestion;    
-        } 
-        else if(score == 0) {
-            AfficherQuestions.innerText = "T'y est un tigre le sang : " + score + '/' + totalQuestion;
-        } 
-        else if(score > totalQuestion / 2){
-            AfficherQuestions.innerText = 'Bravo, tu as obtenu : ' + score + '/' + totalQuestion;
-        } 
-        else if(score <= totalQuestion / 2){
-            AfficherQuestions.innerText = 'Pas fou ça tu peux mieux faire : ' + score + '/' + totalQuestion;
-        }
-        else{
-            AfficherQuestions.innerText = "Tout est cassé" + score + '/' + totalQuestion;
-        }
-        
-        AfficherOption.innerHTML = ''; // Effacer les options
-        suivant.style.display ='none'; // Cacher le bouton Suivant
-        replayButton.style.display = 'inline-block' // Reafficher le bouton pour rejouer
-
-    }
-})
+suivant.addEventListener('click',boutonSuivant)
 
 
 // Fonction pour réinitialiser le quiz
@@ -110,6 +97,7 @@ replayButton.addEventListener('click', () => {
 
 
 function checkAnswer(event){
+    clearInterval(time)
     const answerId = document.getElementsByClassName("answer") //Récupère tous les éléments avec la classe "answer".
     let reponse = categories.questions[currentQuestionIndex].correct_answer // stockage de la réponse
     let choix = event.target.innerText  //Récupère le texte de la réponse choisie par l'utilisateur.
@@ -135,4 +123,35 @@ function checkAnswer(event){
 
 }
 
+function boutonSuivant(){
+    suivant.disabled = true
+    currentQuestionIndex += 1// Incrémente l'index de la question courante
+    let totalQuestion = parseInt(categories.questions.length)
+    if (currentQuestionIndex < totalQuestion) {    // Vérifie s'il reste des questions à afficher
+        loadQuestion(currentQuestionIndex) // Afficher la question suivante
+    } 
+    else {// Si plus de questions, indiquer la fin du quiz
+        timer.style.display ='none'
+        if(score == totalQuestion){
+            AfficherQuestions.innerText = "Félicitations, tu as obtenu le score parfait de : " + score + '/' + totalQuestion;    
+        } 
+        else if(score == 0) {
+            AfficherQuestions.innerText = "T'y est un tigre le sang : " + score + '/' + totalQuestion;
+        } 
+        else if(score > totalQuestion / 2){
+            AfficherQuestions.innerText = 'Bravo, tu as obtenu : ' + score + '/' + totalQuestion;
+        } 
+        else if(score <= totalQuestion / 2){
+            AfficherQuestions.innerText = 'Pas fou ça tu peux mieux faire : ' + score + '/' + totalQuestion;
+        }
+        else{
+            AfficherQuestions.innerText = "Tout est cassé" + score + '/' + totalQuestion;
+        }
+        
+        AfficherOption.innerHTML = ''; // Effacer les options
+        suivant.style.display ='none'; // Cacher le bouton Suivant
+        replayButton.style.display = 'inline-block' // Reafficher le bouton pour rejouer
 
+    }
+
+}
