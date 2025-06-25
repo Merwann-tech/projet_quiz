@@ -133,7 +133,7 @@ function boutonSuivant(){
     else {// Si plus de questions, indiquer la fin du quiz
         timer.style.display ='none'
         if(score == totalQuestion){
-            AfficherQuestions.innerText = "Félicitations, tu as obtenu le score parfait de : " + score + '/' + totalQuestion;    
+            AfficherQuestions.innerText = "Félicitations, tu as obtenu le score parfait de : " + score + '/' + totalQuestion;  
         } 
         else if(score == 0) {
             AfficherQuestions.innerText = "T'y est un tigre le sang : " + score + '/' + totalQuestion;
