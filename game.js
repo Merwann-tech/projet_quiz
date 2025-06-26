@@ -7,6 +7,7 @@ const scoreButton = document.getElementById('scoreRegister')
 const scoreBoard = document.getElementById('score')
 const timer = document.getElementById("timer")
 
+let categorieScore = ""
 let currentQuestionIndex = 0// Initialise l'index de la question courante à 0
 let score = 0 // Initialise le score du joueur à 0
 let numCategories = 0 // Initialise la catégorie à 0, on pourrait la laisser vide
@@ -96,6 +97,7 @@ suivant.addEventListener('click',boutonSuivant)
 
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
+    categorieScore = categories.nom
     score = 0 //  Réinitialiser le score
     currentQuestionIndex = 0 //  Réinitialiser l'index 
     suivant.style.display ='inline-block'; // Reafficher le bouton Suivant
@@ -170,24 +172,41 @@ function boutonSuivant(){
 function meilleurScore(){
     scoreButton.style.display ='inline-block';
     const text = document.createElement('h1'); // Crée un bouton
-    text.innerText = "choisir votre psedo"; // Définit le texte du bouton
+    text.innerText = "choisir votre pseudo"; // Définit le texte du bouton
     AfficherOption.appendChild(text); // Ajoute le bouton à l'élément options
     const option_btn = document.createElement('input'); // Crée un bouton
-    option_btn.setAttribute("id","psedo"); // Ajoute une classe CSS au bouton
+    option_btn.setAttribute("id","pseudo"); // Ajoute une classe CSS au bouton
     option_btn.setAttribute("style","width: 400px; display: inline;")
     AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
     scoreButton.addEventListener('click', () => {
-        let pseudo = document.getElementById("psedo").value
-        if (pseudo = "delete"){
+        let pseudo = document.getElementById("pseudo").value
+        if (categorieScore == categories.nom){
+            if (pseudo == "delete"){
+                localStorage.clear()
+                scoreBoardUpdate()
+            }
+            else if (pseudo != ""){
+                localStorage.setItem(pseudo, score);
+                scoreBoardUpdate()
+                AfficherOption.innerHTML = ""
+                scoreButton.style.display ='none';
+            }
+        }
+        else{
             localStorage.clear()
-            scoreBoardUpdate()
+            if (pseudo == "delete"){
+                localStorage.clear()
+                scoreBoardUpdate()
+            }
+            else if (pseudo != ""){
+                localStorage.setItem(pseudo, score);
+                scoreBoardUpdate()
+                AfficherOption.innerHTML = ""
+                scoreButton.style.display ='none';
+            }
+
         }
-        else if (pseudo != ""){
-            localStorage.setItem(pseudo, score);
-            scoreBoardUpdate()
-            AfficherOption.innerHTML = ""
-            scoreButton.style.display ='none';
-        }
+
 
 
     })
@@ -195,6 +214,7 @@ function meilleurScore(){
 
 function scoreBoardUpdate(){
     scoreBoard.innerText = "Meuilleurs scores"
+    scoreBoard.innerHTML += `<br>${categories.nom}`
     let localArray = Object.keys(localStorage).map(key => {
         return {
         key: key,
