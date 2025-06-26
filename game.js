@@ -23,13 +23,13 @@ function decompt(){
     let tempsRestant = 15
     timer.innerText = `Temps restant : ${tempsRestant}s`
     time = setInterval(() => {
-    tempsRestant--;
+    tempsRestant = (tempsRestant - 0.1).toFixed(1)
     timer.innerText = `Temps restant : ${tempsRestant}s`;
     if (tempsRestant <= 0) {
         clearInterval(time);
         boutonSuivant()
     }
-    }, 1000);  
+    }, 100);  
 }
 
 

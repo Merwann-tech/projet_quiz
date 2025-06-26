@@ -169,7 +169,7 @@ body{
   }
 }
 /*téléphone de merwann et ça me fait chier mais ça marche*/
-@media (max-width: 320px) {
+@media (max-width: 335px) {
   body {
     margin: 10px;
     padding: 10px; 
