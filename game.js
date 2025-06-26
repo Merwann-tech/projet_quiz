@@ -7,13 +7,11 @@ const scoreButton = document.getElementById('scoreRegister')
 const scoreBoard = document.getElementById('score')
 const timer = document.getElementById("timer")
 
-let categorieScore = ""
 let currentQuestionIndex = 0// Initialise l'index de la question courante à 0
 let score = 0 // Initialise le score du joueur à 0
 let numCategories = 0 // Initialise la catégorie à 0, on pourrait la laisser vide
 let categories = quiz.categories[numCategories] // on récupère la liste des catégories
 let time = ""
-scoreBoardUpdate()
 choixQuiz()
 
 document.addEventListener("keydown",(e) =>{
@@ -64,6 +62,7 @@ function choixQuiz(){
 function checkQuiz(event){
     numCategories = parseInt(event.target.id)
     categories = quiz.categories[numCategories] // on récupère le numéro de catégorie  
+    scoreBoardUpdate()
     loadQuestion(currentQuestionIndex)
 }
 
@@ -97,7 +96,7 @@ suivant.addEventListener('click',boutonSuivant)
 
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
-    categorieScore = categories.nom
+    scoreBoard.style.display ='none';
     score = 0 //  Réinitialiser le score
     currentQuestionIndex = 0 //  Réinitialiser l'index 
     suivant.style.display ='inline-block'; // Reafficher le bouton Suivant
@@ -180,49 +179,34 @@ function meilleurScore(){
     AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
     scoreButton.addEventListener('click', () => {
         let pseudo = document.getElementById("pseudo").value
-        if (categorieScore == categories.nom){
             if (pseudo == "delete"){
                 localStorage.clear()
                 scoreBoardUpdate()
             }
             else if (pseudo != ""){
-                localStorage.setItem(pseudo, score);
+                localStorage.setItem(`${pseudo}_${categories.nom}`, score);
                 scoreBoardUpdate()
                 AfficherOption.innerHTML = ""
                 scoreButton.style.display ='none';
             }
-        }
-        else{
-            localStorage.clear()
-            if (pseudo == "delete"){
-                localStorage.clear()
-                scoreBoardUpdate()
-            }
-            else if (pseudo != ""){
-                localStorage.setItem(pseudo, score);
-                scoreBoardUpdate()
-                AfficherOption.innerHTML = ""
-                scoreButton.style.display ='none';
-            }
-
-        }
-
-
-
     })
 }
 
 function scoreBoardUpdate(){
-    scoreBoard.innerText = "Meuilleurs scores"
+    scoreBoard.style.display ='inline-block';
+    scoreBoard.innerText = "Meilleurs scores"
     scoreBoard.innerHTML += `<br>${categories.nom}`
-    let localArray = Object.keys(localStorage).map(key => {
-        return {
-        key: key,
-        value: localStorage.getItem(key)
-        };
-    });
-    localArray.sort((a, b) => b.value.localeCompare(a.value));
+    let localArray = Object.keys(localStorage)
+        .filter(key => key.endsWith(`_${categories.nom}`))
+        .map(key => {
+            return {
+                pseudo: key.split("_")[0],
+                value: localStorage.getItem(key)
+            };
+        });
+
+    localArray.sort((a, b) => b.value - a.value);;
     for (let player of localArray) {
-        scoreBoard.innerHTML += `<br>${player.key}: ${player.value}/${categories.questions.length}`
+        scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${categories.questions.length}`
     }
 }
