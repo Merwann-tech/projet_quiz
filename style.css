@@ -1,223 +1,149 @@
-body{
 
-    display: flex;                                                                                          /*l'element flex permet de créer des élements flexibles qu'on va pouvoir modifier et attribuer une taille précise*/
-    text-align: center;                                                                                     /*permet de centrer notre texte dans son element*/
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                           /*bon c'est la font*/
-    justify-content: center;                                                                                /*ça dit à notre page qu'on veut que nos éléments soient placés au centre de la page*/
-    background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));
+body {
+  display: flex;                                                                                          /*l'element flex permet de créer des élements flexibles qu'on va pouvoir modifier et attribuer une taille précise*/
+  text-align: center;                                                                                     /*permet de centrer notre texte dans son element*/
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                           /*bon c'est la font*/
+  justify-content: center;                                                                                /*ça dit à notre page qu'on veut que nos éléments soient placés au centre de la page*/
+  align-items: center;
+  background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));
 
-    /*références de couleurs associées a frida khalo --> NE PAS DECOMMENTEZ SVP
-    background: linear-gradient( to right,
-    #574b50,
-    #879f84,
-    rgb(213, 207, 20),
-    rgba(250, 128, 114, 0.671),
-    rgba(255, 0, 0, 0.649),
-    grey);
-    */
+  height: 100vh;  /* Place nos élements au milieu de la page ( en peut le virer je pense )*/
+  margin: 0px;
+}
+
+/*On va encapsuler notre div qui contient le quizz pour que ça ne bouge pas et que ça reste en place lorsqu'on va changer la taille de l'affichage de façon dynamique*/
+#quiz-container {
+  background-color: transparent;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 1000px;
+  width: 100%;
+  
+}
+
+.question {
+  display: flex;                                                                                          /*transforme nos boutons en éléments flex*/
+  flex-direction: column;                                                                                 /*permet d'afficher en colonne*/
+  align-items: center;                                                                                    /*place nos questions au centre de notre box*/                                                                               
+  justify-content: center;
+  
+
+  font-size: 1.75rem;
+  margin-bottom: 30px;
+  background-color: white;
+  padding: 20px;
+
+  border-radius: 1cm;
+  text-align: center;
+
+  height: 100px;/*ça donne de l'épaisseur à l'encadré de notre question à notre question*/
+}
+
+.answer,.classQuiz{
+
+  display: block;
+  width: 100%;
+  margin-top: 20px; /*Pour espacer nos boutons entre eux*/
+  padding: 15px; /* espacement des cotés pour que la zone du texte ne dépasse pas*/
+  font-size: 1.1rem;
+  height: 100px;
+  
+  
+  border-radius: 1cm;
+  background-color: white;
+  cursor: pointer;
 }
 
 
-.question{
-    display: flex;                                                                                          /*transforme nos boutons en éléments flex*/
-    flex-direction: column;                                                                                 /*permet d'afficher en colonne*/
-    align-items: center;                                                                                    /*place nos questions au centre de notre box*/                                                                               
-    justify-content: center;
-    width: 900px;                                                                                           /*défini la taille de nox box en largeur*/
-    height: 100px;                                                                                          /*défini la taille de nox box en hauteur*/
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;                                                                                        /*défini la taille de notre typopgraphie*/
-    text-align: center;
-
-    margin: 20px;                                                                                           /*défini la taille de nos marges */
-    padding: 35px 50px;                                                                                     /*défini l'espace utilisable de notre typo*/
-
-    background-color: white;                                                                              /*défini la couleur de notre arrière plan*/
-
-    border-radius: 1cm;                                                                                     /*défini l'arrondi de notre bordure*/
-
+.button-container {
+  text-align: center;
 }
 
 
-.answer,
-.classQuiz{
-    display: flex;                                                                                          /*transforme nos boutons en éléments flex*/
-    flex-direction: column;                                                                                 /*permet d'afficher nos boutons en colonne*/
-    align-items: center;                                                                                   /*permet de centrer nos boutons au milieu de l'espace*/
-    justify-content: center;    
-    width: 1000px;                                                                                          /*défini la taille de nox box en largeur*/
-    height: 100px;                                                                                          /*défini la taille de nox box en hauteur*/
+.end-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
 
-    margin: 20px;                                                                                           /*défini la taille de nos marges */
-    padding: 35px 50px;                                                                                     /*défini l'espace utilisable de notre typo*/
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
-    text-align: center;
-
-    background-color: white;
-    border-radius: 1cm;                                                                                     /*défini l'arrondi de notre bordure*/
-    cursor: pointer;                                                                                        /*Nous montre qu'on est bien sur le button*/
+  text-align: center;
+  font-size: 1.1rem;
+  background-color:  rgba(250, 128, 114, 0.671);
+  border-radius: 2px solid black;
+  border-radius: 1cm;
+  cursor: pointer;
 }
 
-
+/*Action à faire quand on passe sur le bouton et qu'on click dessus*/
 .answer:hover,
 .classQuiz:hover{                                                                                              /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
-    transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
+  transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
 
 .answer:active,
 .classQuiz:active{                                                                                             /*changement lorsqu'on va appuyer sur le bouton avec la souris*/
-    background-color: rgb(250, 128, 114);                                                                 /*va changer le background de notre bouton lorsqu'on va appuyer dessus*/
-}
-
-.end-button{
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                          
-    font-size: 15px;
-    color: black;                                                                                         /*permet de faire passer notre texte en priorité sur la couleur du background*/
-    text-align: center;
-
-    margin: 10px;                                                                                           /*défini notre marge entre cet élement*/
-    padding: 10px 15px;                                                                                     /*défini l'espace utilisable de notre typo*/
-
-    width: 250px;                                                                                           /*défini la taille de nox box en largeur*/
-    height: 50px;                                                                                           /*défini la taille de nox box en hauteur*/
-
-    background-color:  rgba(250, 128, 114, 0.671);
-    border: 2px solid black;
-    border-radius: 1cm;
-
-    cursor: pointer;                                                                                        /*défini l'arrondi de notre bordure*/
+  background-color: rgb(250, 128, 114);                                                                 /*va changer le background de notre bouton lorsqu'on va appuyer dessus*/
 }
 
 .end-button:hover{
-    transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
+  transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
 
 .end-button:active{
-    background-color: rgb(250, 128, 114);
+  background-color: rgb(250, 128, 114);
 }
 
+/*indépendant car on le définit ailleurs il n'est pas régit par les mêmes choix*/
 #timer {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 20px;
-    font-weight: bold;
-    background: rgba(255,255,255,0.8);
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
+
 
 /* media queries */
 
+
 @media (max-width: 600px) {
   body {
-    margin: 10px;
     padding: 10px; 
   }
 
   #quiz-container {
     padding: 20px;
-
-    max-width: 100%;
+    max-width: 100%; 
   }
 
   .question {
-    width: 450px;
-    height: 100px;
-    
     font-size: 1rem; 
-    padding: 20px;
-
-    max-width: 100%;
+    padding: 15px; 
   }
 
-  .answer,.classQuiz {
-    width: 500px;
-    height: 100px;
-
-    font-size: 1rem; 
-    padding: 20px; 
-    max-width: 100%;
-    height: auto;
+  .options button {
+    font-size: 0.8rem; 
+    padding: 12px; 
   }
 
   #next-button,
   #replay-button {
     padding: 8px 15px;
-    font-size: 1rem;
-    max-width: 100%;
-    height: auto; 
+    font-size: 1rem; 
   }
 
   .button-container {
     margin-top: 15px;
   }
-
-  #timer{
-    font-size: 10px;
-    padding: 10px 15px;
-    top: 10px;
-    right: 15px;
-
-  }
 }
-/*téléphone de merwann et ça me fait chier mais ça marche*/
-@media (max-width: 335px) {
-  body {
-    margin: 10px;
-    padding: 10px; 
-  }
 
-  #quiz-container {
-    padding: 20px;
 
-    max-width: 100%;
-  }
-
-  .question {
-    width: 200px;
-    height: 50px;
-    
-    font-size: 0.8rem; 
-    padding: 20px;
-
-    max-width: 100%;
-  }
-
-  .answer,.classQuiz {
-    width: 240px;
-    height: 50px;
-
-    font-size: 0.8rem; 
-    padding: 20px; 
-    max-width: 100%;
-    height: auto;
-  }
-
-  #next-button,
-  #replay-button {
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    max-width: 100%;
-    height: auto; 
-  }
-
-  .button-container {
-    margin-top: 10px;
-  }
-
-  #timer{
-    font-size: 8px;
-    padding: 8px 10px;
-    top: 8px;
-    right: 10px;
-    
-  }
-}
+/*afficher les questions en colonnes et tout tavu ( a voir si j'ai le temps de faire cette merde )*/
+/*on a pas besoin de changer la taille du timer  dans le media au dessus de 600 car il est bien mis et il est transparent donc ça va pas spécialement déranger*/
+/*théoriquement on a juste besoin de changer l'affichage des options pour les séparer en quatre ( j'avais déjà réussi aut tout début donc a voir si je me souviens de comment j'avais fait mdr )*/
+/* c'est pas probablement pas sur github car c'était pas l'affichage de base qu'on voulait avoir avec cette merde donc c'est pas de bol mdr */
