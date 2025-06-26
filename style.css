@@ -134,14 +134,14 @@ body {
   }
 
   .question {
-    font-size: 1.5rem; 
+    font-size: 1.1rem; 
     padding: 15px;
     height: 50px;
   }
 
   .answer,
   .classQuiz {
-    font-size: 1.25rem; 
+    font-size: 0.8rem; 
     padding: 12px; 
     height: 50px;
   }
