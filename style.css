@@ -30,7 +30,7 @@ body {
 
   font-size: 1.75rem;
   margin-bottom: 30px;
-  background-color: white;
+  background-color: lightgrey;
   padding: 20px;
 
   border-radius: 1cm;
@@ -45,7 +45,7 @@ body {
   width: 100%;
   margin-top: 20px; /*Pour espacer nos boutons entre eux*/
   padding: 15px; /* espacement des cotés pour que la zone du texte ne dépasse pas*/
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   height: 100px;
   
   
@@ -122,13 +122,16 @@ body {
   }
 
   .question {
-    font-size: 1rem; 
-    padding: 15px; 
+    font-size: 1.5rem; 
+    padding: 15px;
+    height: 50px;
   }
 
-  .options button {
-    font-size: 0.8rem; 
+  .answer,
+  .classQuiz {
+    font-size: 1.25rem; 
     padding: 12px; 
+    height: 50px;
   }
 
   #next-button,
