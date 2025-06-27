@@ -110,5 +110,71 @@ export const quiz = {
                 }
             ]
         }
+        ,
+        {
+            nom: "Frances Spence",
+            questions: [
+                {
+                    text: "Frances Spence est surtout connue pour son travail sur quel projet informatique historique ?",
+                    options: [
+                        "Le développement de l'ENIAC, l'un des premiers ordinateurs électroniques.",
+                        "La création du langage de programmation COBOL.",
+                        "La conception du premier microprocesseur.",
+                        "L'invention de la souris d'ordinateur."
+                    ],
+                    correct_answer: "Le développement de l'ENIAC, l'un des premiers ordinateurs électroniques."
+                },
+                {
+                    text: "Quel était le rôle principal de Frances Spence au sein de l'équipe ENIAC ?",
+                    options: [
+                        "Ingénieure en matériel électronique.",
+                        "Programmeuse et opératrice de l'ENIAC.",
+                        "Directrice de projet.",
+                        "Spécialiste en réseaux informatiques."
+                    ],
+                    correct_answer: "Programmeuse et opératrice de l'ENIAC."
+                },
+                {
+                    text: "Dans quel contexte historique Frances Spence a-t-elle travaillé sur l'ENIAC ?",
+                    options: [
+                        "Pendant la Seconde Guerre mondiale.",
+                        "Lors de la conquête spatiale dans les années 1960.",
+                        "Durant la révolution Internet des années 1990.",
+                        "Au début du XXIe siècle."
+                    ],
+                    correct_answer: "Pendant la Seconde Guerre mondiale."
+                },
+                {
+                    text: "Avec quelles autres femmes Frances Spence a-t-elle collaboré sur l'ENIAC ?",
+                    options: [
+                        "Avec les six programmeuses pionnières, dont Jean Jennings Bartik et Betty Snyder.",
+                        "Avec Ada Lovelace et Grace Hopper.",
+                        "Avec Margaret Hamilton et Katherine Johnson.",
+                        "Avec Hedy Lamarr et Radia Perlman."
+                    ],
+                    correct_answer: "Avec les six programmeuses pionnières, dont Jean Jennings Bartik et Betty Snyder."
+                },
+                {
+                    text: "Quel héritage Frances Spence a-t-elle laissé dans le domaine de l'informatique ?",
+                    options: [
+                        "Elle a contribué à ouvrir la voie aux femmes dans la programmation informatique.",
+                        "Elle a inventé le premier système d'exploitation moderne.",
+                        "Elle a fondé la première entreprise de logiciels.",
+                        "Elle a développé le premier réseau social en ligne."
+                    ],
+                    correct_answer: "Elle a contribué à ouvrir la voie aux femmes dans la programmation informatique."
+                },
+                {
+                    text: "Quel était l'un des principaux défis techniques rencontrés par Frances Spence et son équipe lors de la programmation de l'ENIAC ?",
+                    options: [
+                        "La programmation se faisait manuellement en connectant des câbles et en ajustant des commutateurs.",
+                        "L'ENIAC utilisait un écran tactile pour entrer les instructions.",
+                        "Les programmes étaient stockés sur des disques durs modernes.",
+                        "La machine pouvait être programmée à distance via Internet."
+                    ],
+                    correct_answer: "La programmation se faisait manuellement en connectant des câbles et en ajustant des commutateurs."
+                }
+            ]
+        }
     ]
 };
