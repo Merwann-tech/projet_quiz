@@ -1,57 +1,60 @@
 
 body {
-  display: flex;                                                                                          /*l'element flex permet de créer des élements flexibles qu'on va pouvoir modifier et attribuer une taille précise*/
+  display: flex;                                                                                          /*l'element flex permet de créer des élements flexibles, on va pouvoir replacer notre élément body en ligne ou en colonne*/
   text-align: center;                                                                                     /*permet de centrer notre texte dans son element*/
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                           /*bon c'est la font*/
-  justify-content: center;                                                                                /*ça dit à notre page qu'on veut que nos éléments soient placés au centre de la page*/
-  align-items: center;
-  background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                           /*bon c'est la font, il n'y a pas de magie noire la dedans*/
+  justify-content: center;                                                                                /*On demande que notre item soit au centre --> direction opposé de align-items*/
+  align-items: center;                                                                                    /*On demande que notre item soit au centre --> direction opposé de justify-content */
+  background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));   /*Linear-gradient permet de créer un fondu de couleru et to right nous indique dans quel direction on souhaite aller*/
 
-  height: 100vh;  /* Place nos élements au milieu de la page ( en peut le virer je pense )*/
-  margin: 0px;
+  height: 100vh;  /* Permet de créer une zone plus grande pour notre élement*/
+  margin: 0px;    /*on défini notre marge comme nulle / on est pas obligé de la mettre je pense*/
 }
 
 /*On va encapsuler notre div qui contient le quizz pour que ça ne bouge pas et que ça reste en place lorsqu'on va changer la taille de l'affichage de façon dynamique*/
 #quiz-container {
-  background-color: transparent;
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 1000px;
-  width: 100%;
+  background-color: transparent;  /*On demande a notre background de ne pas avoir de couleurs, ça sers si on souhaite changer la couleur du body sans toucher a notre box*/
+  padding: 30px;                  /*Notre écart de remplissage, dans ce cas présent, on souhaite avoir 30px d'écarts entre notre boite et la limite de notre texte*/
+  border-radius: 15px;            /*Permet d'arrondir nos coins*/
+  max-width: 1000px;              /*La largeur maximale de notre box*/
+  width: 100%;                    /*On définit que notre box utilise constamment la largeur maximale utilisable ( dans ce cas, notre largeur sera toujours maximale )*/
   
 }
 
+/*Notre espace qui contient la partie question du quiz, elle est différente de nos boutons qui servent à répondre*/
 .question {
-  display: flex;                                                                                          /*transforme nos boutons en éléments flex*/
-  flex-direction: column;                                                                                 /*permet d'afficher en colonne*/
-  align-items: center;                                                                                    /*place nos questions au centre de notre box*/                                                                               
+  display: flex;                                                                                          
+  flex-direction: column;         /*Permet d'afficher nos questions en colonnes*/
+  align-items: center;            /*Les élements seront situés au centre de la box*/                                                                               
   justify-content: center;
   
 
-  font-size: 1.75rem;
-  margin-bottom: 30px;
-  background-color: lightgrey;
-  padding: 20px;
+  font-size: 1.75rem;             /*rem correspond a la taille de la font a la racine ( root em )*/
+  margin-bottom: 30px;            /*l'espace entre nos boutons*/
+  background-color: lightgrey;  
+  padding: 20px;                  /*l'espace entre les bords de notre box et le texte ( la limite quoi, le minimum syndical, un peu de place libre pour circuler dans le train)*/
 
-  border-radius: 1cm;
-  text-align: center;
+  border-radius: 1cm;             /*comme px mais c'est pas pareil*/
+  text-align: center;             
 
-  height: 100px;/*ça donne de l'épaisseur à l'encadré de notre question à notre question*/
+  height: 100px;                  /*ça donne de l'épaisseur à l'encadré de notre question à notre question*/
 }
 
+
+/*Notre espace qui contient la partie réponse du quiz, elle vient après les questions et n'agit pas de la même façon*/
 .answer,.classQuiz{
 
-  display: block;
-  width: 100%;
-  margin-top: 20px; /*Pour espacer nos boutons entre eux*/
-  padding: 15px; /* espacement des cotés pour que la zone du texte ne dépasse pas*/
-  font-size: 1.5rem;
-  height: 100px;
+  display: block;                 /*le block permet de créer des "block" ce qui permet de séparer chaque élément*/
+  width: 100%;                    /*Les boutons prennent 100% de l'espace disponible*/
+  margin-top: 20px;               /*Pour espacer nos boutons entre eux, on a choisi margin-top car ça nous permet de créer un espace avec la partie question*/
+  padding: 15px;                  /*Espacement des cotés pour que la zone du texte ne dépasse pas*/
+  font-size: 1.5rem;              
+  height: 100px;                  /*Permet d'avoir un affichage plus propre et ça laisse plus de place pour bien voir les options*/
   
   
   border-radius: 1cm;
   background-color: white;
-  cursor: pointer;
+  cursor: pointer;                /*Permet de changer la tronche de notre souris a l'écran, avec cette option on voit la différence quand on passe sur un bouton*/
 }
 
 
@@ -59,11 +62,11 @@ body {
   text-align: center;
 }
 
-
+/*Différent de nos boutons answer et classQuiz car ce sont les boutons qui permettent de changer de question et ils n'agissent pas de la même façon*/
 .end-button {
-  display: inline-block;
+  display: inline-block;         /*à la différence du block, on va demander a ce que nos élements soit affichés sur la même ligne*/
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 20px;            /*avec deux variables, on change les côtés et la hauteur a ne pas pouvoir changer*/
 
   text-align: center;
   font-size: 1.1rem;
@@ -73,28 +76,32 @@ body {
   cursor: pointer;
 }
 
-/*Action à faire quand on passe sur le bouton et qu'on click dessus*/
+/*Changement lorsqu'on passe sur le bouton*/
 .answer:hover,
-.classQuiz:hover{                                                                                              /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
-  transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
+.classQuiz:hover{                                   /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
+  transform: translateY(-2px);                      /*permet de changer les coordonnées de nos éléments*/
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);      /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
 }
 
+
+/*changement lorsqu'on va appuyer sur le bouton avec la souris*/
 .answer:active,
-.classQuiz:active{                                                                                             /*changement lorsqu'on va appuyer sur le bouton avec la souris*/
-  background-color: rgb(250, 128, 114);                                                                 /*va changer le background de notre bouton lorsqu'on va appuyer dessus*/
+.classQuiz:active{                                  
+  background-color: rgb(250, 128, 114);           /*va changer le background de notre bouton lorsqu'on va appuyer dessus*/
 }
 
 .end-button:hover{
-  transform: translateY(-2px);                                                                            /*permet de changer les coordonnées de nos éléments*/
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);                                                            /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton*/
+  transform: translateY(-2px);                      /*permet de changer les coordonnées de nos éléments, pour faire un effet de déplacement*/
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);      /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton )*/
 }
 
 .end-button:active{
   background-color: rgb(250, 128, 114);
 }
 
-/*indépendant car on le définit ailleurs il n'est pas régit par les mêmes choix*/
+/*Les deux prochains espaces sont extérieurs au reste et donc doivent être définis en entier car ils n'ont pas la même utilité*/
+
+/*Situé à droite, il affiche le chrono pendant le quiz*/
 #timer {
   position: absolute;
   top: 20px;
@@ -107,6 +114,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+/*Situé à gauche, il affiche le score enregistré à la fin du quiz*/
 #score {
   position: absolute;
   top: 20px;
@@ -118,7 +126,9 @@ body {
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-/*on n'a pas mis de margun et de de padding car c'est un input et on ne veut pas changer l'espace pris par le bouton, ses limites sont définies par les zones intéragissables*/
+
+
+/*on n'a pas mis de margin et de de padding car c'est un input et on ne veut pas changer l'espace pris par le bouton, ses limites sont définies par les zones intéragissables*/
 #pseudo{
   display: flex;
   width: 100%;
@@ -134,9 +144,8 @@ body {
   cursor: pointer;
 }
 
-/* media queries */
-
-
+/*Changement des paramètres lorsqu'on change de résolution pixel ( téléphone, tablette,... )*/
+/*Les 600px sont la pour nous indiquer qu'on va changer les paramètres lorsqu'on a moins de 600pixels sur notre écran*/
 @media (max-width: 600px) {
   body {
     padding: 10px; 
@@ -170,14 +179,15 @@ body {
     margin-top: 15px;
   }
 
-  #timer { /*rapprocher de nos marges pour que ça prenne moins de place sur notre écran*/
+  /*rapprocher de nos marges pour que ça prenne moins de place sur notre écran*/
+  #timer { 
     top: 10px;
     right: 15px;
     font-size: 0.7rem;
   }
   
-  
-  #score { /*Changer le score pour le mettre en bas sur une version mobile*/
+  /*Changer le score pour le mettre en bas sur une version mobile*/
+  #score { 
     position: flex;
     align-items: center;
     justify-content: center;
