@@ -108,17 +108,30 @@ body {
 }
 
 #score {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    font-size: 20px;
-    font-weight: bold;
-    background: rgba(255,255,255,0.8);
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  background: rgba(255,255,255,0.8);
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-
+/*on n'a pas mis de margun et de de padding car c'est un input et on ne veut pas changer l'espace pris par le bouton, ses limites sont définies par les zones intéragissables*/
+#pseudo{
+  display: flex;
+  width: 100%;
+  font-size: 1.5rem;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  
+  
+  border-radius: 1cm;
+  background-color: white;
+  cursor: pointer;
+}
 
 /* media queries */
 
@@ -154,6 +167,22 @@ body {
 
   .button-container {
     margin-top: 15px;
+  }
+
+  #timer { /*rapprocher de nos marges pour que ça prenne moins de place sur notre écran*/
+    top: 10px;
+    right: 15px;
+    font-size: 0.7rem;
+  }
+  
+  
+  #score { /*Changer le score pour le mettre en bas sur une version mobile*/
+    position: flex;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    left: 15px;
+    font-size: 0.7rem;
   }
 }
 

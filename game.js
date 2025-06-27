@@ -36,6 +36,7 @@ function decompt(){
 
 
 function choixQuiz(){
+    AfficherQuestions.style.height = "100px" // je rechange la valeur du height car on la modifie a la fin pour afficher les gifs au résultat
     suivant.style.display ='none';
     scoreButton.style.display ='none';
     AfficherQuestions.innerText = "Choisis ton Quiz" // changer l'affichage
@@ -143,18 +144,35 @@ function boutonSuivant(){
     } 
     else {// Si plus de questions, indiquer la fin du quiz
         timer.style.display ='none'
+        AfficherQuestions.style.backgroundColor = "white"
+        AfficherQuestions.style.height = "400px"
+
+        //Affichage quand score Parfait
         if(score == totalQuestion){
-            AfficherQuestions.innerText = "Félicitations, tu as obtenu le score parfait de : " + score + '/' + totalQuestion;  
-        } 
-        else if(score == 0) {
-            AfficherQuestions.innerText = "T'y est un tigre le sang : " + score + '/' + totalQuestion;
-        } 
-        else if(score > totalQuestion / 2){
-            AfficherQuestions.innerText = 'Bravo, tu as obtenu : ' + score + '/' + totalQuestion;
-        } 
-        else if(score <= totalQuestion / 2){
-            AfficherQuestions.innerText = 'Pas fou ça tu peux mieux faire : ' + score + '/' + totalQuestion;
+            AfficherQuestions.innerHTML = `<p>Félicitations, tu as obtenu le score parfait de : ${score} / ${totalQuestion} </p>` +
+                            "<img class = gif src = https://www.icegif.com/wp-content/uploads/2023/05/icegif-105.gif alt = score_parfait />"
         }
+        
+        //Affichage quand le score est de 0
+        else if(score == 0) {
+            AfficherQuestions.innerHTML = `<p> T'y est un tigre le sang : ${score} / ${totalQuestion} </p>` +
+                            "<img class = gif src = https://media.tenor.com/ih7NzdreP3sAAAAM/hungry-tiger-cub-licking-tiger-cub.gif alt = Tigre />"
+
+        }
+
+        //Affichage quand score au dessus de la moyenne
+        else if(score > totalQuestion / 2){
+            AfficherQuestions.innerHTML = `<p>Bravo, tu as obtenu : ${score} / ${totalQuestion} </p>` +
+                            "<img class = gif src = https://media.tenor.com/R4hfEKhV_SEAAAAM/good-job-awesome.gif alt = score_correct />"
+        } 
+
+        //Affichage quand score en dessous de la moyenne
+        else if(score <= totalQuestion / 2){
+            AfficherQuestions.innerHTML = `Pas fou ça tu peux mieux faire : ${score} / ${totalQuestion}` +
+                            "<img class = gif src = https://media.tenor.com/QsOGinNNNU0AAAAM/not-very-good-benjamin.gif alt = score_horrible />"
+        }
+
+        // Si ça marche pas au moins ça nous le dit
         else{
             AfficherQuestions.innerText = "Tout est cassé" + score + '/' + totalQuestion;
         }
@@ -170,13 +188,17 @@ function boutonSuivant(){
 
 function meilleurScore(){
     scoreButton.style.display ='inline-block';
-    const text = document.createElement('h1'); // Crée un bouton
+
+    const text = document.createElement('p'); // Crée un bouton
+    text.setAttribute = ("class", "question")
+
     text.innerText = "choisir votre pseudo"; // Définit le texte du bouton
     AfficherOption.appendChild(text); // Ajoute le bouton à l'élément options
+
     const option_btn = document.createElement('input'); // Crée un bouton
     option_btn.setAttribute("id","pseudo"); // Ajoute une classe CSS au bouton
-    option_btn.setAttribute("style","width: 400px; display: inline;")
     AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
+    
     scoreButton.addEventListener('click', () => {
         let pseudo = document.getElementById("pseudo").value
             if (pseudo == "delete"){
