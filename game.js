@@ -201,16 +201,20 @@ function meilleurScore(){
     
     scoreButton.addEventListener('click', () => {
         let pseudo = document.getElementById("pseudo").value
-            if (pseudo == "delete"){
-                localStorage.clear()
-                scoreBoardUpdate()
+        if (pseudo.length <= 10 ){
+            if (!pseudo.includes("_")){
+                if (pseudo == "delete"){
+                    localStorage.clear()
+                    scoreBoardUpdate()
+                }
+                else if (pseudo != ""){
+                    localStorage.setItem(`${pseudo}_${categories.nom}`, score);
+                    scoreBoardUpdate()
+                    AfficherOption.innerHTML = ""
+                    scoreButton.style.display ='none';
+                }
             }
-            else if (pseudo != ""){
-                localStorage.setItem(`${pseudo}_${categories.nom}`, score);
-                scoreBoardUpdate()
-                AfficherOption.innerHTML = ""
-                scoreButton.style.display ='none';
-            }
+        }    
     })
 }
 
