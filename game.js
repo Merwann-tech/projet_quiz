@@ -75,7 +75,7 @@ function loadQuestion(currentQuestion){
     AfficherOption.innerHTML = "" // Efface les options précédentes avant d'afficher les nouvelles
     let incrementationId = 1// Pour chaque option de la première question, crée un bouton et l'ajoute à la page
 
-    categories.questions[currentQuestion].options.forEach(elem => {
+    randomQuestion().forEach(elem => {
         const option_btn = document.createElement('button'); // Crée un bouton
         option_btn.innerText = elem; // Définit le texte du bouton
         option_btn.classList.add('answer'); // Ajoute une classe CSS au bouton
@@ -218,6 +218,7 @@ function meilleurScore(){
     })
 }
 
+
 function scoreBoardUpdate(){
     scoreBoard.style.display ='inline-block';
     scoreBoard.innerText = "Meilleurs scores"
@@ -235,4 +236,10 @@ function scoreBoardUpdate(){
     for (let player of localArray) {
         scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${categories.questions.length}`
     }
+}
+
+function randomQuestion(){
+    let random = categories.questions[currentQuestionIndex].options
+    random.sort(() => Math.random() - 0.5);
+    return random
 }
