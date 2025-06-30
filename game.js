@@ -6,6 +6,7 @@ const replayButton = document.getElementById('replay-button')// Sélectionne le 
 const scoreButton = document.getElementById('scoreRegister')
 const scoreBoard = document.getElementById('score')
 const timer = document.getElementById("timer")
+const progressBar = document.getElementById("progress")
 
 let currentQuestionIndex = 0// Initialise l'index de la question courante à 0
 let score = 0 // Initialise le score du joueur à 0
@@ -63,6 +64,9 @@ function choixQuiz(){
 function checkQuiz(event){
     numCategories = parseInt(event.target.id)
     categories = quiz.categories[numCategories] // on récupère le numéro de catégorie  
+    progressBar.max = parseInt(categories.questions.length)
+    progressBar.value = 0
+    progressBar.style.display = 'inline-block';
     scoreBoardUpdate()
     loadQuestion(currentQuestionIndex)
 }
@@ -97,6 +101,7 @@ suivant.addEventListener('click',boutonSuivant)
 
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
+    progressBar.style.display ='none';
     scoreBoard.style.display ='none';
     AfficherQuestions.style.backgroundColor = "white" // remet le fond en blanc pour choisir le quiz
     score = 0 //  Réinitialiser le score
@@ -139,6 +144,7 @@ function checkAnswer(event){
 function boutonSuivant(){
     suivant.disabled = true
     currentQuestionIndex += 1// Incrémente l'index de la question courante
+    progressBar.value = currentQuestionIndex 
     let totalQuestion = parseInt(categories.questions.length)
     if (currentQuestionIndex < totalQuestion) {    // Vérifie s'il reste des questions à afficher
         loadQuestion(currentQuestionIndex) // Afficher la question suivante
