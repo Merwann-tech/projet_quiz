@@ -73,7 +73,6 @@ function checkQuiz(event){
 
 function loadQuestion(currentQuestion){
     decompt()
-    AfficherQuestions.style.backgroundColor ="lightgrey" // à changer pour afficher les questions en gris, a voir si on veut changer plus tard
     suivant.style.display ='inline-block'
     const question1 = categories.questions[currentQuestion].text // Récupère le texte de la première question du quiz
     AfficherQuestions.innerHTML = `<p><u>Question ${currentQuestionIndex +1} :</u> ${question1}</p>` // Affiche la première question dans l'élément sélectionné
@@ -104,7 +103,6 @@ suivant.addEventListener('click',boutonSuivant)
 replayButton.addEventListener('click', () => {
     progressBar.style.display ='none'
     scoreBoard.style.display ='none'
-    AfficherQuestions.style.backgroundColor = "white" // remet le fond en blanc pour choisir le quiz
     score = 0 //  Réinitialiser le score
     currentQuestionIndex = 0 //  Réinitialiser l'index 
     suivant.style.display ='inline-block' // Reafficher le bouton Suivant
@@ -152,7 +150,6 @@ function boutonSuivant(){
     } 
     else {// Si plus de questions, indiquer la fin du quiz
         timer.style.display ='none'
-        AfficherQuestions.style.backgroundColor = "white"
         AfficherQuestions.style.height = "400px"
 
         //Affichage quand score Parfait
