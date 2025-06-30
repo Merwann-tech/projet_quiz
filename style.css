@@ -128,6 +128,14 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+#progress {
+  position: absolute;
+  top: 0px;
+  width: 50%;
+  height: 5%;
+
+}
+
 
 /*on n'a pas mis de margin et de de padding car c'est un input et on ne veut pas changer l'espace pris par le bouton, ses limites sont définies par les zones intéragissables*/
 #pseudo{
