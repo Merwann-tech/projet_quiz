@@ -127,12 +127,12 @@ body {
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-
+/*Situé au centre, il s'agit de notre barre de progression pour savoir l'avancement du quiz*/
 #progress {
   position: absolute;
   top: 0px;
   width: 50%;
-  height: 5%;
+  height: 5vh;
 
 }
 
@@ -192,7 +192,7 @@ body {
   #timer { 
     top: 10px;
     right: 15px;
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
   
   /*Changer le score pour le mettre en bas sur une version mobile*/
@@ -202,8 +202,17 @@ body {
     justify-content: center;
     top: 10px;
     left: 15px;
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
+
+  /*Changer la taille de l'affichage de la barre de progression*/
+  #progress {
+  position: absolute;
+  top: 0px;
+  width: 35%;
+  height: 5vh;
+
+}
 }
 
 
