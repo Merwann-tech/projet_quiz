@@ -175,6 +175,213 @@ export const quiz = {
                     correct_answer: "La programmation se faisait manuellement en connectant des câbles et en ajustant des commutateurs."
                 }
             ]
+        },
+        {
+            nom: "Quiz Général",
+            questions: [
+                {
+                    text: "Quel est le plus grand océan du monde ?",
+                    options: [
+                        "Océan Atlantique",
+                        "Océan Indien",
+                        "Océan Pacifique",
+                        "Océan Arctique"
+                    ],
+                    correct_answer: "Océan Pacifique"
+                },
+                {
+                    text: "Qui a peint la Joconde ?",
+                    options: [
+                        "Vincent Van Gogh",
+                        "Pablo Picasso",
+                        "Léonard de Vinci",
+                        "Claude Monet"
+                    ],
+                    correct_answer: "Léonard de Vinci"
+                },
+                {
+                    text: "Quelle est la capitale du Japon ?",
+                    options: [
+                        "Pékin",
+                        "Séoul",
+                        "Tokyo",
+                        "Bangkok"
+                    ],
+                    correct_answer: "Tokyo"
+                },
+                {
+                    text: "Combien de continents existe-t-il sur Terre ?",
+                    options: [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+                    correct_answer: "7"
+                },
+                {
+                    text: "Quel est l’élément chimique dont le symbole est O ?",
+                    options: [
+                        "Or",
+                        "Oxygène",
+                        "Osmium",
+                        "Ozone"
+                    ],
+                    correct_answer: "Oxygène"
+                },
+                {
+                    text: "Dans quelle ville se trouve la Tour Eiffel ?",
+                    options: [
+                        "Londres",
+                        "Berlin",
+                        "Paris",
+                        "Rome"
+                    ],
+                    correct_answer: "Paris"
+                },
+                {
+                    text: "Quel est le plus grand mammifère terrestre ?",
+                    options: [
+                        "Éléphant d’Afrique",
+                        "Baleine bleue",
+                        "Girafe",
+                        "Rhinocéros"
+                    ],
+                    correct_answer: "Éléphant d’Afrique"
+                },
+                {
+                    text: "Qui a écrit 'Le Petit Prince' ?",
+                    options: [
+                        "Victor Hugo",
+                        "Antoine de Saint-Exupéry",
+                        "Jules Verne",
+                        "Albert Camus"
+                    ],
+                    correct_answer: "Antoine de Saint-Exupéry"
+                },
+                {
+                    text: "Quelle planète est la plus proche du Soleil ?",
+                    options: [
+                        "Vénus",
+                        "Terre",
+                        "Mercure",
+                        "Mars"
+                    ],
+                    correct_answer: "Mercure"
+                },
+                {
+                    text: "Combien de couleurs y a-t-il dans un arc-en-ciel ?",
+                    options: [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+                    correct_answer: "7"
+                },
+                {
+                    text: "Quel est le pays d’origine du flamenco ?",
+                    options: [
+                        "Italie",
+                        "Espagne",
+                        "Portugal",
+                        "Grèce"
+                    ],
+                    correct_answer: "Espagne"
+                },
+                {
+                    text: "Quel animal est le symbole de la sagesse dans la mythologie grecque ?",
+                    options: [
+                        "Le lion",
+                        "La chouette",
+                        "Le serpent",
+                        "Le dauphin"
+                    ],
+                    correct_answer: "La chouette"
+                },
+                {
+                    text: "Quel est le plus long fleuve du monde ?",
+                    options: [
+                        "Nil",
+                        "Amazone",
+                        "Yangtsé",
+                        "Mississippi"
+                    ],
+                    correct_answer: "Amazone"
+                },
+                {
+                    text: "Qui a inventé le téléphone ?",
+                    options: [
+                        "Thomas Edison",
+                        "Alexander Graham Bell",
+                        "Nikola Tesla",
+                        "Guglielmo Marconi"
+                    ],
+                    correct_answer: "Alexander Graham Bell"
+                },
+                {
+                    text: "Quel est le symbole chimique du fer ?",
+                    options: [
+                        "Fe",
+                        "Ir",
+                        "Fr",
+                        "Fi"
+                    ],
+                    correct_answer: "Fe"
+                },
+                {
+                    text: "Dans quel pays se trouve la ville de Marrakech ?",
+                    options: [
+                        "Tunisie",
+                        "Égypte",
+                        "Maroc",
+                        "Algérie"
+                    ],
+                    correct_answer: "Maroc"
+                },
+                {
+                    text: "Quel est le plus grand désert du monde ?",
+                    options: [
+                        "Désert du Sahara",
+                        "Désert de Gobi",
+                        "Désert d’Atacama",
+                        "Antarctique"
+                    ],
+                    correct_answer: "Antarctique"
+                },
+                {
+                    text: "Qui a composé la 9ème symphonie ?",
+                    options: [
+                        "Wolfgang Amadeus Mozart",
+                        "Ludwig van Beethoven",
+                        "Johann Sebastian Bach",
+                        "Frédéric Chopin"
+                    ],
+                    correct_answer: "Ludwig van Beethoven"
+                },
+                {
+                    text: "Quel est le plus petit pays du monde ?",
+                    options: [
+                        "Monaco",
+                        "Saint-Marin",
+                        "Vatican",
+                        "Liechtenstein"
+                    ],
+                    correct_answer: "Vatican"
+                },
+                {
+                    text: "Quel est l’organe principal de la respiration chez l’homme ?",
+                    options: [
+                        "Le cœur",
+                        "Le foie",
+                        "Le poumon",
+                        "Le rein"
+                    ],
+                    correct_answer: "Le poumon"
+                }
+            ]
         }
     ]
 };
+
+    
