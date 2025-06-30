@@ -239,9 +239,7 @@ function scoreBoardUpdate(){
                 value: localStorage.getItem(key)
             }
         })
-    console.log(localArray)
     localArray.sort((a, b) => b.value - a.value)
-    console.log(localArray)
     for (let player of localArray) {
         scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${categories.questions.length}`
     }
