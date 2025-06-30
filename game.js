@@ -13,6 +13,8 @@ let score = 0 // Initialise le score du joueur à 0
 let numCategories = 0 // Initialise la catégorie à 0, on pourrait la laisser vide
 let categories = quiz.categories[numCategories] // on récupère la liste des catégories
 let time = ""
+let tempsRestant = 15
+let tempsTotal = 0
 choixQuiz()
 
 document.addEventListener("keydown",(e) =>{
@@ -23,16 +25,16 @@ document.addEventListener("keydown",(e) =>{
 
 function decompt(){
     timer.style.display ='inline-block'
-    let tempsRestant = 15
+    tempsRestant = 15
     timer.innerText = `Temps restant : ${tempsRestant}s`
     time = setInterval(() => {
-    tempsRestant = (tempsRestant - 0.1).toFixed(1)
+    tempsRestant = (tempsRestant - 0.01).toFixed(2)
     timer.innerText = `Temps restant : ${tempsRestant}s`
     if (tempsRestant <= 0) {
         clearInterval(time)
         boutonSuivant()
     }
-    }, 100)
+    }, 10)
 }
 
 
@@ -101,6 +103,7 @@ suivant.addEventListener('click',boutonSuivant)
 
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
+    tempsTotal = 0
     progressBar.style.display ='none'
     scoreBoard.style.display ='none'
     score = 0 //  Réinitialiser le score
@@ -141,6 +144,8 @@ function checkAnswer(event){
 }
 
 function boutonSuivant(){
+    tempsTotal += (15 - tempsRestant)
+    console.log(tempsTotal)
     suivant.disabled = true
     currentQuestionIndex += 1// Incrémente l'index de la question courante
     progressBar.value = currentQuestionIndex 
@@ -213,7 +218,7 @@ function meilleurScore(){
                     scoreBoardUpdate()
                 }
                 else if (pseudo != ""){
-                    localStorage.setItem(`${pseudo}_${categories.nom}`, score)
+                    localStorage.setItem(`${pseudo}_${categories.nom}`, `${score}/${categories.questions.length}/${tempsTotal.toFixed(2)}`)
                     scoreBoardUpdate()
                     AfficherOption.innerHTML = ""
                     scoreButton.style.display ='none'
@@ -233,12 +238,16 @@ function scoreBoardUpdate(){
         .map(key => {
             return {
                 pseudo: key.split("_")[0],
-                value: localStorage.getItem(key)
+                value: localStorage.getItem(key).split("/")[0],
+                scoreMax: localStorage.getItem(key).split("/")[1],
+                time: localStorage.getItem(key).split("/")[2]
             }
         })
+    console.log(localArray)
+    localArray.sort((a, b) => a.time - b.time)
     localArray.sort((a, b) => b.value - a.value)
     for (let player of localArray) {
-        scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${categories.questions.length}`
+        scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${player.scoreMax} ${player.time}sec`
     }
 }
 
