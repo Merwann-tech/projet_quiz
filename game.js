@@ -145,7 +145,6 @@ function checkAnswer(event){
 
 function boutonSuivant(){
     tempsTotal += (15 - tempsRestant)
-    console.log(tempsTotal)
     suivant.disabled = true
     currentQuestionIndex += 1// Incrémente l'index de la question courante
     progressBar.value = currentQuestionIndex 
@@ -243,7 +242,6 @@ function scoreBoardUpdate(){
                 time: localStorage.getItem(key).split("/")[2]
             }
         })
-    console.log(localArray)
     localArray.sort((a, b) => a.time - b.time)
     localArray.sort((a, b) => b.value - a.value)
     for (let player of localArray) {
