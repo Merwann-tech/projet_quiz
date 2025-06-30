@@ -5,7 +5,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                           /*bon c'est la font, il n'y a pas de magie noire la dedans*/
   justify-content: center;                                                                                /*On demande que notre item soit au centre --> direction opposé de align-items*/
   align-items: center;                                                                                    /*On demande que notre item soit au centre --> direction opposé de justify-content */
-  background: linear-gradient(to right, #879f84, rgb(213, 207, 20), rgba(250, 128, 114, 0.671));   /*Linear-gradient permet de créer un fondu de couleru et to right nous indique dans quel direction on souhaite aller*/
+  background: linear-gradient(to right, #B2FBA5, rgb(255, 244, 79), #FFB6C1);   /*Linear-gradient permet de créer un fondu de couleru et to right nous indique dans quel direction on souhaite aller*/
 
   height: 100vh;  /* Permet de créer une zone plus grande pour notre élement*/
   margin: 0px;    /*on défini notre marge comme nulle / on est pas obligé de la mettre je pense*/
@@ -87,7 +87,7 @@ body {
 /*changement lorsqu'on va appuyer sur le bouton avec la souris*/
 .answer:active,
 .classQuiz:active{                                  
-  background-color: rgb(250, 128, 114);           /*va changer le background de notre bouton lorsqu'on va appuyer dessus*/
+  transform: translateY(0);         
 }
 
 .end-button:hover{
@@ -97,6 +97,7 @@ body {
 
 .end-button:active{
   background-color: rgb(250, 128, 114);
+  transform: translateY(0);
 }
 
 /*Les deux prochains espaces sont extérieurs au reste et donc doivent être définis en entier car ils n'ont pas la même utilité*/
@@ -157,7 +158,7 @@ body {
   }
 
   .question {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
     padding: 15px;
     height: 50px;
   }

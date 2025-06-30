@@ -98,6 +98,7 @@ suivant.addEventListener('click',boutonSuivant)
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
     scoreBoard.style.display ='none';
+    AfficherQuestions.style.backgroundColor = "white" // remet le fond en blanc pour choisir le quiz
     score = 0 //  Réinitialiser le score
     currentQuestionIndex = 0 //  Réinitialiser l'index 
     suivant.style.display ='inline-block'; // Reafficher le bouton Suivant
