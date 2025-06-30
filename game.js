@@ -27,29 +27,29 @@ function decompt(){
     timer.innerText = `Temps restant : ${tempsRestant}s`
     time = setInterval(() => {
     tempsRestant = (tempsRestant - 0.1).toFixed(1)
-    timer.innerText = `Temps restant : ${tempsRestant}s`;
+    timer.innerText = `Temps restant : ${tempsRestant}s`
     if (tempsRestant <= 0) {
-        clearInterval(time);
+        clearInterval(time)
         boutonSuivant()
     }
-    }, 100);  
+    }, 100)
 }
 
 
 function choixQuiz(){
     AfficherQuestions.style.height = "100px" // je rechange la valeur du height car on la modifie a la fin pour afficher les gifs au résultat
-    suivant.style.display ='none';
-    scoreButton.style.display ='none';
+    suivant.style.display ='none'
+    scoreButton.style.display ='none'
     AfficherQuestions.innerText = "Choisis ton Quiz" // changer l'affichage
     AfficherOption.innerHTML = ''   // on vide l'affichage des options
     let incrementationQuiz = 0    // permet de donner un id aux boutons de quiz --> voir dans boucle forEach
 
     quiz.categories.forEach(categorieName => {
-        const option_btn = document.createElement('button'); // Crée un bouton
-        option_btn.innerText = categorieName.nom; // Définit le texte du bouton
-        option_btn.classList.add('classQuiz'); // Ajoute une classe CSS au bouton
+        const option_btn = document.createElement('button') // Crée un bouton
+        option_btn.innerText = categorieName.nom // Définit le texte du bouton
+        option_btn.classList.add('classQuiz') // Ajoute une classe CSS au bouton
         option_btn.setAttribute("id",incrementationQuiz)
-        AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
+        AfficherOption.appendChild(option_btn) // Ajoute le bouton à l'élément options
         incrementationQuiz ++
         
     })
@@ -66,27 +66,27 @@ function checkQuiz(event){
     categories = quiz.categories[numCategories] // on récupère le numéro de catégorie  
     progressBar.max = parseInt(categories.questions.length)
     progressBar.value = 0
-    progressBar.style.display = 'inline-block';
+    progressBar.style.display = 'inline-block'
     scoreBoardUpdate()
     loadQuestion(currentQuestionIndex)
 }
 
 function loadQuestion(currentQuestion){
     decompt()
-    suivant.style.display ='inline-block';
+    suivant.style.display ='inline-block'
     const question1 = categories.questions[currentQuestion].text // Récupère le texte de la première question du quiz
     AfficherQuestions.innerText = question1    // Affiche la première question dans l'élément sélectionné
     AfficherOption.innerHTML = "" // Efface les options précédentes avant d'afficher les nouvelles
     let incrementationId = 1// Pour chaque option de la première question, crée un bouton et l'ajoute à la page
 
     randomQuestion().forEach(elem => {
-        const option_btn = document.createElement('button'); // Crée un bouton
-        option_btn.innerText = elem; // Définit le texte du bouton
-        option_btn.classList.add('answer'); // Ajoute une classe CSS au bouton
+        const option_btn = document.createElement('button') // Crée un bouton
+        option_btn.innerText = elem // Définit le texte du bouton
+        option_btn.classList.add('answer') // Ajoute une classe CSS au bouton
         option_btn.setAttribute("id",`reponse${incrementationId}`)
-        AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
+        AfficherOption.appendChild(option_btn) // Ajoute le bouton à l'élément options
         incrementationId ++
-    });
+    })
 
     const boutonOption = document.querySelectorAll('.answer') // Ajoute un écouteur d'événement à chaque bouton réponse
     boutonOption.forEach(element => { 
@@ -101,16 +101,16 @@ suivant.addEventListener('click',boutonSuivant)
 
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
-    progressBar.style.display ='none';
-    scoreBoard.style.display ='none';
+    progressBar.style.display ='none'
+    scoreBoard.style.display ='none'
     AfficherQuestions.style.backgroundColor = "white" // remet le fond en blanc pour choisir le quiz
     score = 0 //  Réinitialiser le score
     currentQuestionIndex = 0 //  Réinitialiser l'index 
-    suivant.style.display ='inline-block'; // Reafficher le bouton Suivant
+    suivant.style.display ='inline-block' // Reafficher le bouton Suivant
     replayButton.style.display = 'none' // Cacher le bouton pour rejouer
     choixQuiz()   // Recharger la page de sélection ( la première page quoi )
   
-});
+})
 
 
 
@@ -181,11 +181,11 @@ function boutonSuivant(){
 
         // Si ça marche pas au moins ça nous le dit
         else{
-            AfficherQuestions.innerText = "Tout est cassé" + score + '/' + totalQuestion;
+            AfficherQuestions.innerText = "Tout est cassé" + score + '/' + totalQuestion
         }
         
-        AfficherOption.innerHTML = ''; // Effacer les options
-        suivant.style.display ='none'; // Cacher le bouton Suivant
+        AfficherOption.innerHTML = '' // Effacer les options
+        suivant.style.display ='none' // Cacher le bouton Suivant
         replayButton.style.display = 'inline-block' // Reafficher le bouton pour rejouer
         meilleurScore()
 
@@ -194,17 +194,17 @@ function boutonSuivant(){
 }
 
 function meilleurScore(){
-    scoreButton.style.display ='inline-block';
+    scoreButton.style.display ='inline-block'
 
-    const text = document.createElement('p'); // Crée un bouton
+    const text = document.createElement('p') // Crée un bouton
     text.setAttribute = ("class", "question")
 
-    text.innerText = "choisir votre pseudo"; // Définit le texte du bouton
-    AfficherOption.appendChild(text); // Ajoute le bouton à l'élément options
+    text.innerText = "choisir votre pseudo" // Définit le texte du bouton
+    AfficherOption.appendChild(text) // Ajoute le bouton à l'élément options
 
-    const option_btn = document.createElement('input'); // Crée un bouton
-    option_btn.setAttribute("id","pseudo"); // Ajoute une classe CSS au bouton
-    AfficherOption.appendChild(option_btn); // Ajoute le bouton à l'élément options
+    const option_btn = document.createElement('input') // Crée un bouton
+    option_btn.setAttribute("id","pseudo") // Ajoute une classe CSS au bouton
+    AfficherOption.appendChild(option_btn) // Ajoute le bouton à l'élément options
     
     scoreButton.addEventListener('click', () => {
         let pseudo = document.getElementById("pseudo").value
@@ -215,10 +215,10 @@ function meilleurScore(){
                     scoreBoardUpdate()
                 }
                 else if (pseudo != ""){
-                    localStorage.setItem(`${pseudo}_${categories.nom}`, score);
+                    localStorage.setItem(`${pseudo}_${categories.nom}`, score)
                     scoreBoardUpdate()
                     AfficherOption.innerHTML = ""
-                    scoreButton.style.display ='none';
+                    scoreButton.style.display ='none'
                 }
             }
         }    
@@ -227,7 +227,7 @@ function meilleurScore(){
 
 
 function scoreBoardUpdate(){
-    scoreBoard.style.display ='inline-block';
+    scoreBoard.style.display ='inline-block'
     scoreBoard.innerText = "Meilleurs scores"
     scoreBoard.innerHTML += `<br>${categories.nom}`
     let localArray = Object.keys(localStorage)
@@ -236,10 +236,11 @@ function scoreBoardUpdate(){
             return {
                 pseudo: key.split("_")[0],
                 value: localStorage.getItem(key)
-            };
-        });
-
-    localArray.sort((a, b) => b.value - a.value);;
+            }
+        })
+    console.log(localArray)
+    localArray.sort((a, b) => b.value - a.value)
+    console.log(localArray)
     for (let player of localArray) {
         scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${categories.questions.length}`
     }
@@ -247,6 +248,6 @@ function scoreBoardUpdate(){
 
 function randomQuestion(){
     let random = categories.questions[currentQuestionIndex].options
-    random.sort(() => Math.random() - 0.5);
+    random.sort(() => Math.random() - 0.5)
     return random
 }
