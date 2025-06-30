@@ -31,7 +31,7 @@ body {
 
   font-size: 1.75rem;             /*rem correspond a la taille de la font a la racine ( root em )*/
   margin-bottom: 30px;            /*l'espace entre nos boutons*/
-  background-color: lightgrey;  
+  background-color: white;  
   padding: 20px;                  /*l'espace entre les bords de notre box et le texte ( la limite quoi, le minimum syndical, un peu de place libre pour circuler dans le train)*/
 
   border-radius: 1cm;             /*comme px mais c'est pas pareil*/

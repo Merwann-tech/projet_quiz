@@ -73,6 +73,7 @@ function checkQuiz(event){
 
 function loadQuestion(currentQuestion){
     decompt()
+    AfficherQuestions.style.backgroundColor ="lightgrey" // à changer pour afficher les questions en gris, a voir si on veut changer plus tard
     suivant.style.display ='inline-block'
     const question1 = categories.questions[currentQuestion].text // Récupère le texte de la première question du quiz
     AfficherQuestions.innerText = question1    // Affiche la première question dans l'élément sélectionné
