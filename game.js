@@ -18,6 +18,7 @@ let categories = quiz.categories[numCategories] // on récupère la liste des ca
 let time = "" //variable tampon function setTimer
 let remainingTime = 15 //temps donner pour répondre
 let totalTime = 0  //temps total d'une personne pour un quiz
+let toggleF2 = true
 
 /*****************************************************Appel fonction depart********************************************************************** */
 
@@ -252,10 +253,18 @@ function scoreBoardUpdate(){
     localArray.sort((a, b) => a.time - b.time)  // On le trie par temps
     localArray.sort((a, b) => b.value - a.value) // On le trie par score
     
-    //On affiche notre information dans le highscore
-    for (let player of localArray) {
-        scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${player.scoreMax}` //${player.time}sec
+
+    if (toggleF2 == true){ //On affiche notre information dans le highscore sans le timer
+        for (let player of localArray) {
+        scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${player.scoreMax}`
     }
+    }
+    else { //On affiche notre information dans le highscore avec le timer
+        for (let player of localArray) {
+            scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${player.scoreMax} ${player.time}sec` 
+    }
+    }
+
 }
 
 
@@ -274,3 +283,16 @@ document.addEventListener("keydown",(e) =>{
     }
 })
 
+// touche F2 change le scoreboard
+document.addEventListener("keydown",(e) =>{
+    if(e.key === "F2" ){
+        if (toggleF2 == true){
+            toggleF2 = false
+            scoreBoardUpdate()
+        }
+        else if (toggleF2 == false){
+            toggleF2 = true
+            scoreBoardUpdate()
+        }
+    }
+})
