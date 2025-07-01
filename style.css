@@ -1,4 +1,8 @@
 
+/*Le css est dans l'ensemble défini avec des unités relatives sauf timer et score*/
+/* https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Values_and_Units --> Site de mozilla pour expliquer les unités relatives*/
+/*En amélioration, on pourrait changer l'affichage de #timer et de #score pour qu'elles soient également en unités relatives*/
+
 body {
   display: flex;                                                                                          /*l'element flex permet de créer des élements flexibles, on va pouvoir replacer notre élément body en ligne ou en colonne*/
   text-align: center;                                                                                     /*permet de centrer notre texte dans son element*/
@@ -115,7 +119,7 @@ body {
   top: 20px;
   right: 30px;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: bold;                      /*La font est en gras*/
   background: rgba(255,255,255,0.8);
   padding: 10px 20px;
   border-radius: 20px;
@@ -148,6 +152,7 @@ body {
 
 
 /*on n'a pas mis de margin et de de padding car c'est un input et on ne veut pas changer l'espace pris par le bouton, ses limites sont définies par les zones intéragissables*/
+/*Un des cotés ( droit ) est pas bien centré*/
 #pseudo{
   display: flex;
   width: 100%;
@@ -156,6 +161,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
   
   border-radius: 1cm;
