@@ -37,17 +37,11 @@ function choiceQuiz(){
         const option_btn = document.createElement('button') // Crée un bouton
         option_btn.innerText = categorieName.nom // Définit le texte du bouton
         option_btn.classList.add('classQuiz') // Ajoute une classe CSS au bouton
-        option_btn.setAttribute("id",incrementationQuiz)
+        option_btn.setAttribute("id",incrementationQuiz) // Permet de rajouter une id au bouton et permet de sélectionner le bon questionnaire
         DisplayOption.appendChild(option_btn) // Ajoute le bouton à l'élément options
-        incrementationQuiz ++
-        
+        incrementationQuiz ++                            // Permet de changer l'id de chacun des quiz
+        option_btn.addEventListener('click', checkQuiz) // lance la fonction checkQuiz
     })
-
-    const quizButtons = document.querySelectorAll('.classQuiz') // Ajoute un écouteur d'événement à chaque bouton réponse
-    quizButtons.forEach(element => { 
-        element.addEventListener('click', checkQuiz) // lance la fonction checkQuiz
-    })
-
 }
 
 function checkQuiz(event){
