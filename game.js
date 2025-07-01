@@ -286,7 +286,7 @@ document.addEventListener("keydown",(e) =>{
 
 // touche F2 change le scoreboard
 document.addEventListener("keydown",(e) =>{
-    if(scoreBoard.style.display =='inline-block'){
+    if(scoreBoard.style.display ='inline-block'){
         if(e.key === "F2" ){
             if (toggleF2 == true){
                 toggleF2 = false
@@ -299,3 +299,4 @@ document.addEventListener("keydown",(e) =>{
         }
     }
 })
+// le 100 commit !!!!!!!!
