@@ -251,7 +251,7 @@ function scoreBoardUpdate(){
     localArray.sort((a, b) => a.time - b.time)
     localArray.sort((a, b) => b.value - a.value)
     for (let player of localArray) {
-        scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${player.scoreMax} ` //${player.time}sec
+        scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${player.scoreMax} ${player.time}sec ` //${player.time}sec
     }
 }
 
