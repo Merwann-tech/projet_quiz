@@ -25,6 +25,7 @@ choiceQuiz()
 
 /*****************************************************Fonction********************************************************************** */
 
+//Fonction qui va lancer l'interface et permettre à l'utilisateur de choisir un quiz
 function choiceQuiz(){
     DisplayQuestions.style.height = "100px" // je rechange la valeur du height car on la modifie a la fin pour afficher les gifs au résultat
     nextButton.style.display ='none'
@@ -44,6 +45,8 @@ function choiceQuiz(){
     })
 }
 
+//Fonction qui permet d'afficher le quiz choisi par l'utilisateur et initialise la progress bar de ce quiz
+//Affiche le scoreboard
 function checkQuiz(event){
     numCategories = parseInt(event.target.id)
     categories = quiz.categories[numCategories] // on récupère le numéro de catégorie  
@@ -54,6 +57,8 @@ function checkQuiz(event){
     loadQuestion(currentQuestionIndex)
 }
 
+//Fonction qui permet d'afficher la question en cours et les différentes options de réponses
+//Affiche le timer et affiche le bouton suivant
 function loadQuestion(currentQuestion){
     setTimer()
     nextButton.style.display ='inline-block'
@@ -62,6 +67,7 @@ function loadQuestion(currentQuestion){
     DisplayOption.innerHTML = "" // Efface les options précédentes avant d'afficher les nouvelles
     let incrementationId = 1// Pour chaque option de la première question, crée un bouton et l'ajoute à la page
 
+    //Boucle qui créer les différentes réponses
     randomQuestion().forEach(elem => {
         const newButton = document.createElement('button') // Crée un bouton
         newButton.innerText = elem // Définit le texte du bouton
@@ -73,6 +79,7 @@ function loadQuestion(currentQuestion){
     })
 }
 
+//Fonction qui permet d'afficher la bonne réponse et rends un affichage différent en fonction du choix
 function checkAnswer(event){
     clearInterval(time)
     const answerId = document.getElementsByClassName("answer") //Récupère tous les éléments avec la classe "answer".
@@ -100,6 +107,7 @@ function checkAnswer(event){
 
 }
 
+//Fonction qui permet de charger la question suivante du quiz
 function nextQuestion(){
     totalTime += (15 - remainingTime)
     nextButton.disabled = true
@@ -153,6 +161,8 @@ function nextQuestion(){
 
 }
 
+//Fonction qui permet de recharger l'écran de sélection des quiz et remets à 0 les variables
+//Désaffiche le highscore et le timer
 function nextQuiz(){
     totalTime = 0
     progressBar.style.display ='none'
@@ -193,29 +203,30 @@ function randomQuestion(){
 function highScore(){
     scoreButton.style.display ='inline-block'
 
-    const text = document.createElement('p')
-    text.setAttribute = ("class", "question")
+    const text = document.createElement('p')  //* on créer une balise paragraphe
+    text.setAttribute = ("class", "question") //*
+    text.innerText = "choisir votre pseudo"   //*
+    DisplayOption.appendChild(text)           //*
 
-    text.innerText = "choisir votre pseudo" 
-    DisplayOption.appendChild(text) 
-
-    const input = document.createElement('input') 
-    input.setAttribute("id","pseudo") 
-    DisplayOption.appendChild(input) 
+    const input = document.createElement('input') //* on créer une balise input
+    input.setAttribute("id","pseudo")             //*
+    DisplayOption.appendChild(input)              //*
     
+
+    //Action qui s'effectue quand on appuie sur le bouton enregistré
     scoreButton.addEventListener('click', () => {
         let pseudo = document.getElementById("pseudo").value
-        if (pseudo.length <= 10 ){
-            if (!pseudo.includes("_")){
-                if (pseudo == "delete"){
-                    localStorage.clear()
-                    scoreBoardUpdate()
+        if (pseudo.length <= 10 ){  // si le pseudo a moins de 10 caractères
+            if (!pseudo.includes("_")){ // si le pseudo n'a pas de "underscore"
+                if (pseudo == "delete"){    //* si qqun écrit "delete", on efface le local storage
+                    localStorage.clear()    //*
+                    scoreBoardUpdate()      //*
                 }
-                else if (pseudo != ""){
-                    localStorage.setItem(`${pseudo}_${categories.nom}`, `${score}/${categories.questions.length}/${totalTime.toFixed(2)}`)
+                else if (pseudo != ""){ // si le pseudo n'est pas vide
+                    localStorage.setItem(`${pseudo}_${categories.nom}`, `${score}/${categories.questions.length}/${totalTime.toFixed(2)}`)  //On enregistre dans le local storage nos données
                     scoreBoardUpdate()
-                    DisplayOption.innerHTML = ""
-                    scoreButton.style.display ='none'
+                    DisplayOption.innerHTML = "" // on retire l'input et le texte ( <p></p> <input></input> )
+                    scoreButton.style.display ='none'   // on supprime le bouton enregistré
                 }
             }
         }    
@@ -224,21 +235,24 @@ function highScore(){
 
 // Fonction qui gère l'affichage des scores. 
 function scoreBoardUpdate(){
-    scoreBoard.style.display ='inline-block'
-    scoreBoard.innerText = "Meilleurs scores"
-    scoreBoard.innerHTML += `<br>${categories.nom}`
-    let localArray = Object.keys(localStorage)
-        .filter(key => key.endsWith(`_${categories.nom}`))
-        .map(key => {
+    scoreBoard.style.display ='inline-block' // on affiche le scoreboard
+    scoreBoard.innerText = "Meilleurs scores"   // on écrit "Meilleurs scores"
+    scoreBoard.innerHTML += `<br>${categories.nom}` // on ecrit la catégorie
+
+    let localArray = Object.keys(localStorage)  // On créer un tableau temporaire
+        .filter(key => key.endsWith(`_${categories.nom}`))  // on stocke seulement une partie de l'information, celles de la catégorie en cours
+        .map(key => {   //.map sert à préciser les différentes catégories de notre tableau
             return {
-                pseudo: key.split("_")[0],
-                value: localStorage.getItem(key).split("/")[0],
-                scoreMax: localStorage.getItem(key).split("/")[1],
-                time: localStorage.getItem(key).split("/")[2]
+                pseudo: key.split("_")[0],                          //* On récupere le pseudo
+                value: localStorage.getItem(key).split("/")[0],     //* On récupere le score
+                scoreMax: localStorage.getItem(key).split("/")[1],  //* On récupere le score maximal 
+                time: localStorage.getItem(key).split("/")[2]       //* On récupère le temps mis
             }
         })
-    localArray.sort((a, b) => a.time - b.time)
-    localArray.sort((a, b) => b.value - a.value)
+    localArray.sort((a, b) => a.time - b.time)  // On le trie par temps
+    localArray.sort((a, b) => b.value - a.value) // On le trie par score
+    
+    //On affiche notre information dans le highscore
     for (let player of localArray) {
         scoreBoard.innerHTML += `<br>${player.pseudo}: ${player.value}/${player.scoreMax}` //${player.time}sec
     }
