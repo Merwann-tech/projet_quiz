@@ -280,6 +280,7 @@ replayButton.addEventListener('click',nextQuiz)
 document.addEventListener("keydown",(e) =>{
     if(e.key === "Enter" ){
         nextButton.click()
+        scoreButton.click()
     }
 })
 
