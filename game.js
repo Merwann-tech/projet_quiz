@@ -178,27 +178,29 @@ function nextQuiz(){
 
 /*****************************************************features********************************************************************** */
 
+// Fonction gestion du timer.
 function setTimer(){
-    timer.style.display ='inline-block'
-    remainingTime = 15
-    timer.innerText = `Temps restant : ${remainingTime}s`
-    time = setInterval(() => {
-    remainingTime = (remainingTime - 0.01).toFixed(2)
-    timer.innerText = `Temps restant : ${remainingTime}s`
-    if (remainingTime <= 0) {
-        clearInterval(time)
-        nextQuestion()
+    timer.style.display ='inline-block'                         // Affichage du timer
+    remainingTime = 15                                          // Réinitialise le timer
+    timer.innerText = `Temps restant : ${remainingTime}s`       // Affiche le timer
+    time = setInterval(() => {                                  // lance la fonction set interval toutes les 10 millisecondes
+    remainingTime = (remainingTime - 0.01).toFixed(2)           // enlève 0.01 seconde toutes les 10 millisecondes
+    timer.innerText = `Temps restant : ${remainingTime}s`       // actualise l'affichage du timer
+    if (remainingTime <= 0) {                                   //* Quand timer arrive à zéro, reset le timer et attend la question suivante 
+        clearInterval(time)                                     //*
+        nextQuestion()                                          //*
     }
-    }, 10)
+    }, 10)                                                      //répete la boucle toutes les 10 millisecondes
 }
 
+// Fonction randomisation des questions.
 function randomQuestion(){
-    let random = categories.questions[currentQuestionIndex].options
-    random.sort(() => Math.random() - 0.5)
-    return random
+    let random = categories.questions[currentQuestionIndex].options // récupère les options en cours dans une variable random.
+    random.sort(() => Math.random() - 0.5)                          // on les mélange.
+    return random                                                   // on les renvoit.
 }
 
-
+// Fonction qui gère le stockage des scores (local storage)
 function highScore(){
     scoreButton.style.display ='inline-block'
 
@@ -231,7 +233,7 @@ function highScore(){
     })
 }
 
-
+// Fonction qui gère l'affichage des scores. 
 function scoreBoardUpdate(){
     scoreBoard.style.display ='inline-block'
     scoreBoard.innerText = "Meilleurs scores"
