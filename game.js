@@ -286,14 +286,16 @@ document.addEventListener("keydown",(e) =>{
 
 // touche F2 change le scoreboard
 document.addEventListener("keydown",(e) =>{
-    if(e.key === "F2" ){
-        if (toggleF2 == true){
-            toggleF2 = false
-            scoreBoardUpdate()
-        }
-        else if (toggleF2 == false){
-            toggleF2 = true
-            scoreBoardUpdate()
+    if(scoreBoard.style.display =='inline-block'){
+        if(e.key === "F2" ){
+            if (toggleF2 == true){
+                toggleF2 = false
+                scoreBoardUpdate()
+            }
+            else if (toggleF2 == false){
+                toggleF2 = true
+                scoreBoardUpdate()
+            }
         }
     }
 })
