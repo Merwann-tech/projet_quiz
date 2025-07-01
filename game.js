@@ -120,31 +120,30 @@ function nextQuestion(){
     } 
     //FIN QUIZ
     else {
-        timer.style.display ='none'
         DisplayQuestions.style.height = "400px"
-
+        timer.innerText = `Press f2 for more informations`
         //Affichage quand score Parfait
         if(score == totalQuestion){
-            DisplayQuestions.innerHTML = `<p>Félicitations, tu as obtenu le score parfait de : ${score} / ${totalQuestion} </p>` +
+            DisplayQuestions.innerHTML = `<p>Félicitations, tu as obtenu le score parfait de : ${score} / ${totalQuestion} en ${totalTime.toFixed(2)}sec</p>` +
                             "<img class = gif src = https://www.icegif.com/wp-content/uploads/2023/05/icegif-105.gif alt = score_parfait />"
         }
         
         //Affichage quand le score est de 0
         else if(score == 0) {
-            DisplayQuestions.innerHTML = `<p> T'y est un tigre le sang : ${score} / ${totalQuestion} </p>` +
+            DisplayQuestions.innerHTML = `<p> T'y est un tigre le sang : ${score} / ${totalQuestion} en ${totalTime.toFixed(2)}sec</p>` +
                             "<img class = gif src = https://media.tenor.com/ih7NzdreP3sAAAAM/hungry-tiger-cub-licking-tiger-cub.gif alt = Tigre />"
 
         }
 
         //Affichage quand score au dessus de la moyenne
         else if(score > totalQuestion / 2){
-            DisplayQuestions.innerHTML = `<p>Bravo, tu as obtenu : ${score} / ${totalQuestion} </p>` +
+            DisplayQuestions.innerHTML = `<p>Bravo, tu as obtenu : ${score} / ${totalQuestion} en ${totalTime.toFixed(2)}sec</p>` +
                             "<img class = gif src = https://media.tenor.com/R4hfEKhV_SEAAAAM/good-job-awesome.gif alt = score_correct />"
         } 
 
         //Affichage quand score en dessous de la moyenne
         else if(score <= totalQuestion / 2){
-            DisplayQuestions.innerHTML = `Pas fou ça tu peux mieux faire : ${score} / ${totalQuestion}` +
+            DisplayQuestions.innerHTML = `<p>Pas fou ça tu peux mieux faire : ${score} / ${totalQuestion} en ${totalTime.toFixed(2)}sec</p>` +
                             "<img class = gif src = https://media.tenor.com/QsOGinNNNU0AAAAM/not-very-good-benjamin.gif alt = score_horrible />"
         }
 
@@ -166,6 +165,7 @@ function nextQuestion(){
 //Désaffiche le highscore et le timer
 function nextQuiz(){
     totalTime = 0
+    timer.style.display ='none'
     progressBar.style.display ='none'
     scoreBoard.style.display ='none'
     score = 0 //  Réinitialiser le score

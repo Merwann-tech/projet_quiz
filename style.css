@@ -209,7 +209,7 @@ body {
 
   /*rapprocher de nos marges pour que ça prenne moins de place sur notre écran*/
   #timer { 
-    top: 10px;
+    top: 35px;
     right: 15px;
     font-size: 0.5rem;
   }
@@ -219,7 +219,7 @@ body {
     position: flex;
     align-items: center;
     justify-content: center;
-    top: 10px;
+    top: 35px;
     left: 15px;
     font-size: 0.5rem;
   }
