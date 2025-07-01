@@ -11,6 +11,7 @@ body {
   margin: 0px;    /*on défini notre marge comme nulle / on est pas obligé de la mettre je pense*/
 }
 
+
 /*On va encapsuler notre div qui contient le quizz pour que ça ne bouge pas et que ça reste en place lorsqu'on va changer la taille de l'affichage de façon dynamique*/
 #quiz-container {
   background-color: transparent;  /*On demande a notre background de ne pas avoir de couleurs, ça sers si on souhaite changer la couleur du body sans toucher a notre box*/
@@ -20,6 +21,7 @@ body {
   width: 100%;                    /*On définit que notre box utilise constamment la largeur maximale utilisable ( dans ce cas, notre largeur sera toujours maximale )*/
   
 }
+
 
 /*Notre espace qui contient la partie question du quiz, elle est différente de nos boutons qui servent à répondre*/
 .question {
@@ -42,7 +44,7 @@ body {
 
 
 /*Notre espace qui contient la partie réponse du quiz, elle vient après les questions et n'agit pas de la même façon*/
-.answer,.classQuiz{
+.answer,.classQuiz {
 
   display: block;                 /*le block permet de créer des "block" ce qui permet de séparer chaque élément*/
   width: 100%;                    /*Les boutons prennent 100% de l'espace disponible*/
@@ -62,6 +64,7 @@ body {
   text-align: center;
 }
 
+
 /*Différent de nos boutons answer et classQuiz car ce sont les boutons qui permettent de changer de question et ils n'agissent pas de la même façon*/
 .end-button {
   display: inline-block;         /*à la différence du block, on va demander a ce que nos élements soit affichés sur la même ligne*/
@@ -76,6 +79,7 @@ body {
   cursor: pointer;
 }
 
+
 /*Changement lorsqu'on passe sur le bouton*/
 .answer:hover,
 .classQuiz:hover{                                   /*changement lorsqu'on pose la souris sur un de nos bouton présent dans la class answer ( pas le bouton validé )*/
@@ -87,13 +91,15 @@ body {
 /*changement lorsqu'on va appuyer sur le bouton avec la souris*/
 .answer:active,
 .classQuiz:active{                                  
-  transform: translateY(0);         
+  transform: translateY(0);        
 }
+
 
 .end-button:hover{
   transform: translateY(-2px);                      /*permet de changer les coordonnées de nos éléments, pour faire un effet de déplacement*/
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);      /*permet de donner une ombre a notre bouton ( sert lorsqu'on va déplacer le bouton )*/
 }
+
 
 .end-button:active{
   background-color: rgb(250, 128, 114);
@@ -101,6 +107,7 @@ body {
 }
 
 /*Les deux prochains espaces sont extérieurs au reste et donc doivent être définis en entier car ils n'ont pas la même utilité*/
+
 
 /*Situé à droite, il affiche le chrono pendant le quiz*/
 #timer {
@@ -115,6 +122,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+
 /*Situé à gauche, il affiche le score enregistré à la fin du quiz*/
 #score {
   position: absolute;
@@ -127,6 +135,8 @@ body {
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
+
+
 /*Situé au centre, il s'agit de notre barre de progression pour savoir l'avancement du quiz*/
 #progress {
   position: absolute;
@@ -152,6 +162,9 @@ body {
   background-color: white;
   cursor: pointer;
 }
+
+
+
 
 /*Changement des paramètres lorsqu'on change de résolution pixel ( téléphone, tablette,... )*/
 /*Les 600px sont la pour nous indiquer qu'on va changer les paramètres lorsqu'on a moins de 600pixels sur notre écran*/
