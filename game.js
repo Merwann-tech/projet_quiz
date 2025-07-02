@@ -85,27 +85,36 @@ function checkAnswer(event){
     clearInterval(time)
     const ANSWER_ID = document.getElementsByClassName("answer") //Récupère tous les éléments avec la classe "answer".
     let answer = categories.questions[currentQuestionIndex].correct_answer // stockage de la réponse
-    let choice = event.target.innerText  //Récupère le texte de la réponse choisie par l'utilisateur.
-
-    if (choice == answer){ // lorsqu'on a la bonne réponse
-        event.target.style.border = "5px solid green" //Met une bordure verte autour de la réponse sélectionnée.
-        NEXT_BUTTON.disabled = false//Active le bouton "suivant".
-        score ++//Incrémente le score.
-        for(let i=0; i < ANSWER_ID.length; i ++){//Désactive tous les boutons de réponse. 
-            ANSWER_ID[i].disabled = true
+    if (event != "timer" ){ // verifie si on a appuyer sur le bouton 
+        let choice = event.target.innerText  //Récupère le texte de la réponse choisie par l'utilisateur.
+        if (choice == answer){ // lorsqu'on a la bonne réponse
+            event.target.style.border = "5px solid green" //Met une bordure verte autour de la réponse sélectionnée.
+            NEXT_BUTTON.disabled = false//Active le bouton "suivant".
+            score ++//Incrémente le score.
+            for(let i=0; i < ANSWER_ID.length; i ++){//Désactive tous les boutons de réponse. 
+                ANSWER_ID[i].disabled = true
+            }
+        }
+        else{ // lorsqu'on pas la bonne réponse
+            event.target.style.border = "5px solid red" // Met une bordure rouge autour de la réponse sélectionnée.
+            NEXT_BUTTON.disabled = false //Active le bouton "suivant".
+            for(let i=0; i < ANSWER_ID.length; i ++){//Désactive tous les boutons de réponse.
+                ANSWER_ID[i].disabled = true
+                if(ANSWER_ID[i].innerText == answer){//Met une bordure verte autour de la bonne réponse.
+                    ANSWER_ID[i].style.border = "5px solid green"  
+                }
+            }
         }
     }
-    else{ // lorsqu'on pas la bonne réponse
-        event.target.style.border = "5px solid red" // Met une bordure rouge autour de la réponse sélectionnée.
+    else{ //si on a pas appuyer sur le bouton 
         NEXT_BUTTON.disabled = false //Active le bouton "suivant".
         for(let i=0; i < ANSWER_ID.length; i ++){//Désactive tous les boutons de réponse.
             ANSWER_ID[i].disabled = true
             if(ANSWER_ID[i].innerText == answer){//Met une bordure verte autour de la bonne réponse.
                 ANSWER_ID[i].style.border = "5px solid green"  
             }
-        }
+        } 
     }
-
 }
 
 //Fonction qui permet de charger la question suivante du quiz
@@ -188,7 +197,7 @@ function setTimer(){
     TIMER.innerText = `Temps restant : ${remainingTime}s`       // actualise l'affichage du timer
     if (remainingTime <= 0) {                                   //* Quand timer arrive à zéro, reset le timer et attend la question suivante 
         clearInterval(time)                                     //*
-        nextQuestion()                                          //*
+        checkAnswer("timer")                                    //*
     }
     }, 10)                                                      //répete la boucle toutes les 10 millisecondes
 }
