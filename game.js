@@ -196,7 +196,7 @@ function setTimer(){
 // Fonction randomisation des questions.
 function randomQuestion(){
     let random = categories.questions[currentQuestionIndex].options // récupère les options en cours dans une variable random.
-    random.sort(() => Math.random() - 0.5)                          // on les mélange.
+    random.sort(() => Math.random() - 0.5)                          // on les mélange. On choisit un nombre entre 0 et 1 --> si < 0, on recule l'élément dans le tableau. si == 0, on ne bouge pas, si > 0, on avance l'élément dans le tableau
     return random                                                   // on les renvoit.
 }
 
